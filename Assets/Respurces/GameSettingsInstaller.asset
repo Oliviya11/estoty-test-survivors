@@ -14,11 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player:
     PlayerMoveHandler:
-      BoundaryBuffer: 0
-      BoundaryAdjustForce: 0
       MoveSpeed: 5
-      SlowDownSpeed: 0
     CameraFollow:
-      RotationAngleX: 55
-      Distance: 10
+      RotationAngleX: 0
+      Distance: 9
       OffsetY: 0.5

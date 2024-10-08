@@ -1,4 +1,5 @@
-﻿using Zenject;
+﻿using UnityEngine;
+using Zenject;
 
 namespace Installers
 {
@@ -6,6 +7,7 @@ namespace Installers
     {
         public override void InstallBindings()
         {
+            Container.Bind<Camera>().FromComponentInHierarchy().AsSingle();
         }
     }
 }

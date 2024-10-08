@@ -17,6 +17,7 @@ namespace Installers
             
             Container.BindInterfacesTo<PlayerInputHandler>().AsSingle();
             Container.BindInterfacesTo<PlayerMoveHandler>().AsSingle();
+            Container.BindInterfacesTo<CameraFollow>().AsSingle();
             Container.Bind<PlayerInputState>().AsSingle();
         }
         

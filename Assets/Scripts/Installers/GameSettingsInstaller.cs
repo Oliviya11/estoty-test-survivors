@@ -20,6 +20,7 @@ namespace Installers
         public override void InstallBindings()
         {
             Container.BindInstance(Player.PlayerMoveHandler).IfNotBound();
+            Container.BindInstance(Player.CameraFollow).IfNotBound();
         }
     }
 }
