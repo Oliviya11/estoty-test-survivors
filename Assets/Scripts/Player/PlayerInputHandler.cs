@@ -22,7 +22,6 @@ namespace Player
             float verticalInput = SimpleInput.GetAxis(Vertical);
             _inputState.IsMovingUp = verticalInput > 0;
             _inputState.IsMovingDown = verticalInput < 0;
-            _inputState.IsStopped = Math.Abs(verticalInput) < float.Epsilon && Math.Abs(horizontalInput) < float.Epsilon;
         }
     }
 }

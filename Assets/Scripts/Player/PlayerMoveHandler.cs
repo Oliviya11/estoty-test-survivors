@@ -22,41 +22,28 @@ namespace Player
 
         public void FixedTick()
         {
-            if (_player.IsDead)
+            if (_inputState.IsMovingLeft)
             {
-                _player.Stop();
-                return;
+                _player.AddForce(
+                    Vector3.left * _settings.MoveSpeed);
             }
 
-            if (_inputState.IsStopped)
+            if (_inputState.IsMovingRight)
             {
-                _player.Stop();
+                _player.AddForce(
+                    Vector3.right * _settings.MoveSpeed);
             }
-            else
+
+            if (_inputState.IsMovingUp)
             {
-                if (_inputState.IsMovingLeft)
-                {
-                    _player.AddForce(
-                        Vector3.left * _settings.MoveSpeed);
-                }
+                _player.AddForce(
+                    Vector3.up * _settings.MoveSpeed);
+            }
 
-                if (_inputState.IsMovingRight)
-                {
-                    _player.AddForce(
-                        Vector3.right * _settings.MoveSpeed);
-                }
-
-                if (_inputState.IsMovingUp)
-                {
-                    _player.AddForce(
-                        Vector3.up * _settings.MoveSpeed);
-                }
-
-                if (_inputState.IsMovingDown)
-                {
-                    _player.AddForce(
-                        Vector3.down * _settings.MoveSpeed);
-                }
+            if (_inputState.IsMovingDown)
+            {
+                _player.AddForce(
+                    Vector3.down * _settings.MoveSpeed);
             }
 
             // Always ensure we are on the main plane

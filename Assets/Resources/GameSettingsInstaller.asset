@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94a6def705274b0d8d75af4f3acfa940, type: 3}
+  m_Name: GameSettingsInstaller
+  m_EditorClassIdentifier: 
+  GameInstaller:
+    EnemyFacadePrefab: {fileID: 6723594372531577740, guid: f1f6fe73932a83d458ab77a2e0ee621e, type: 3}
+    BulletPrefab: {fileID: 0}
+  Player:
+    PlayerMoveHandler:
+      MoveSpeed: 20
+    CameraFollow:
+      RotationAngleX: 0
+      Distance: 9
+      OffsetY: 0.5
+  Enemy:
+    DefaultSettings:
+      MaxHP: 10
+      Speed: 4
+    EnemyCommonSettings:
+      AttackDistance: 1
+    EnemyStateFollow:
+      StrafeMultiplier: 0.5
+      StrafeChangeInterval: 0.8
+      TeleportNewDistance: 40
+    EnemyStateAttack:
+      MeleeSound: {fileID: 0}
+      AttackRadius: 3
+  EnemySpawner:
+    SpeedMinSlow: 5
+    SpeedMaxSlow: 10
+    HPSMinSlow: 80
+    HPMaxSlow: 100
+    NumEnemiesIncreaseRate: 1
+    NumEnemiesSlowStartAmount: 1
+    NumEnemies2StartAmount: 0
+    MinDelayBetweenSpawns: 10

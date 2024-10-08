@@ -31,11 +31,5 @@ namespace Player
             get;
             set;
         }
-
-        public bool IsStopped
-        {
-            get;
-            set;
-        }
     }
 }

@@ -33,11 +33,6 @@ namespace Player
             _rigidBody.AddForce(force);
         }
 
-        public void Stop()
-        {
-            _rigidBody.velocity = Vector3.zero;
-        }
-        
         public bool IsDead
         {
             get; set;
