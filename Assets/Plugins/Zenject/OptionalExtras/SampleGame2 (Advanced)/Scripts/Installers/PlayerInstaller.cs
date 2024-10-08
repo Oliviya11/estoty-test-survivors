@@ -10,6 +10,7 @@ namespace Zenject.SpaceFighter
 
         public override void InstallBindings()
         {
+            Debug.LogError("Install Player");
             Container.Bind<Player>().AsSingle()
                 .WithArguments(_settings.Rigidbody, _settings.MeshRenderer);
 
