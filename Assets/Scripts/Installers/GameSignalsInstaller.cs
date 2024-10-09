@@ -1,4 +1,5 @@
-﻿using Zenject;
+﻿using UI;
+using Zenject;
 
 namespace Installers
 {
@@ -7,7 +8,11 @@ namespace Installers
         public override void InstallBindings()
         {
             SignalBusInstaller.Install(Container);
-            Container.DeclareSignal<GameEvents.EnemyHitSignal>();
+            
+            Container.DeclareSignal<PlayerDiedSignal>();
+            Container.DeclareSignal<PlayerGotDamageSignal>();
+            
+            //Container.BindSignal<PlayerGotDamageSignal>().ToMethod<SliderBar>(x => x.UpdateSlider).FromNew();
         }
     }
 }

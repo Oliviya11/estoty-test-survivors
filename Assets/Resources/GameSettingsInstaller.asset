@@ -31,6 +31,10 @@ MonoBehaviour:
       BulletOffsetDistance: 0.3
       MaxShootInterval: 2
       Range: 5
+    PlayerDamageHandler:
+      HealthLoss: 10
+      HitSound: {fileID: 0}
+      HitSoundVolume: 1
   Enemy:
     DefaultSettings:
       MaxHP: 5

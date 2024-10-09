@@ -1,15 +1,17 @@
 ﻿namespace Installers
 {
-    public class GameEvents
+    public struct PlayerDiedSignal
     {
-        public struct EnemyHitSignal
-        {
-            public float Damage;
+            
+    }
 
-            public EnemyHitSignal(float damage)
-            {
-                Damage = damage;
-            }
+    public struct PlayerGotDamageSignal
+    {
+        public float Value;
+
+        public PlayerGotDamageSignal(float value)
+        {
+            Value = value;
         }
     }
 }

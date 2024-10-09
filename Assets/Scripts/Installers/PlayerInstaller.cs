@@ -23,6 +23,7 @@ namespace Installers
             Container.BindInterfacesAndSelfTo<PlayerDamageHandler>().AsSingle();
             Container.BindInterfacesTo<CameraFollow>().AsSingle();
             Container.Bind<PlayerInputState>().AsSingle();
+            Container.BindInterfacesTo<PlayerHealthWatcher>().AsSingle();
         }
         
         [Serializable]

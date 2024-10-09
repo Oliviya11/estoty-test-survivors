@@ -1,6 +1,7 @@
 ﻿using System;
 using Enemy;
 using Misc;
+using UI;
 using UnityEngine;
 using Zenject;
 
@@ -38,6 +39,8 @@ namespace Installers
                     .UnderTransformGroup("Bullets"));
             
             Container.Bind<EnemyRegistry>().AsSingle();
+            
+            Container.BindInterfacesAndSelfTo<SliderBarHP>().FromComponentInHierarchy().AsSingle();
             
             GameSignalsInstaller.Install(Container);
         }
