@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Enemy.States;
+using UnityEngine;
 using Zenject;
 
 namespace Enemy
@@ -22,7 +23,7 @@ namespace Enemy
         None
     }
     
-    public class EnemyStateManager : ITickable, IFixedTickable, IInitializable
+    public class EnemyStateManager : ITickable, IFixedTickable
     {
         IEnemyState _currentStateHandler;
         EnemyStates _currentState = EnemyStates.None;
@@ -53,11 +54,6 @@ namespace Enemy
             _currentStateHandler.FixedUpdate();
         }
 
-        public void Initialize()
-        {
-            ChangeState(EnemyStates.Follow);
-        }
-        
         public void ChangeState(EnemyStates state)
         {
             if (_currentState == state)

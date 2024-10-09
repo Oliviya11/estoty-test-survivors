@@ -12,6 +12,7 @@ namespace Enemy
         EnemyRegistry _registry;
         IMemoryPool _pool;
         EnemyHitDeathHandler _enemyHitDeathHandler;
+        EnemyStateManager _enemyStateManager;
 
         float health;
         public float Health
@@ -39,12 +40,14 @@ namespace Enemy
             EnemyView view,
             EnemyTunables tunables,
             EnemyRegistry registry,
-            EnemyHitDeathHandler enemyHitDeathHandler)
+            EnemyHitDeathHandler enemyHitDeathHandler,
+            EnemyStateManager enemyStateManager)
         {
             _view = view;
             _tunables = tunables;
             _registry = registry;
             _enemyHitDeathHandler = enemyHitDeathHandler;
+            _enemyStateManager = enemyStateManager;
         }
 
         public void OnDespawned()
@@ -62,6 +65,7 @@ namespace Enemy
             _view.EnemyAnimator.Reset();
             _view.Facade.IsDead = false;
             _view.HpBar.SetValue(_view.Facade.Health, _view.Facade.MaxHP);
+            _enemyStateManager.ChangeState(EnemyStates.Follow);
             _registry.AddEnemy(this);
         }
 

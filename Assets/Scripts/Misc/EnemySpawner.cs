@@ -93,7 +93,7 @@ namespace Misc
             }
 
             // Return the calculated off-screen position with the specified zDistance
-            return new Vector3(xPosition, yPosition, 0);
+            return new Vector3(xPosition, yPosition + 1, 0);
         }
 
         [Serializable]
