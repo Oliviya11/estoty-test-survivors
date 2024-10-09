@@ -6,10 +6,10 @@ namespace Enemy
 {
     public class EnemyView : MonoBehaviour
     {
-        [SerializeField] Rigidbody _rigidBody;
-        [SerializeField] EnemyAnimator _enemyAnimator;
-        [SerializeField] HPBar _hpBar;
-        [SerializeField] SpriteRenderer _spriteRenderer;
+        public Rigidbody _rigidBody;
+        public EnemyAnimator _enemyAnimator;
+        public HPBar _hpBar;
+        public SpriteRenderer _spriteRenderer;
         
         [Inject]
         public EnemyFacade Facade

@@ -1,4 +1,5 @@
 ﻿using Enemy;
+using Player;
 using UnityEngine;
 using Zenject;
 
@@ -24,8 +25,10 @@ namespace Misc
         
         public void OnTriggerEnter(Collider other)
         {
-            var enemyView = other.GetComponent<EnemyView>();
-
+            if (other.transform.parent == null) return;
+            
+            var enemyView = other.transform.parent.GetComponent<EnemyView>();
+            
             if (enemyView != null)
             {
                 enemyView.Facade.Hit(_damage);

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Enemy;
+using Installers;
+using Player;
 using UnityEngine;
 using Zenject;
 using Random = UnityEngine.Random;
@@ -11,6 +13,7 @@ namespace Misc
     {
         readonly EnemyFacade.Factory _enemyFactory;
         readonly Settings _settings;
+        readonly GameInstaller.Settings _gameSettings;
 
         float _desiredNumSlowEnemies;
         int _enemyCount;
@@ -20,12 +23,14 @@ namespace Misc
 
         public EnemySpawner(
             Settings settings,
+            GameInstaller.Settings gameSettings,
             EnemyFacade.Factory enemyFactory,
             Camera camera)
         {
             _enemyFactory = enemyFactory;
             _settings = settings;
             _camera = camera;
+            _gameSettings = gameSettings;
 
             _desiredNumSlowEnemies = settings.NumEnemiesSlowStartAmount;
         }
@@ -49,10 +54,35 @@ namespace Misc
 
         void SpawnEnemy()
         {
-            float speed = Random.Range(_settings.SpeedMinSlow, _settings.SpeedMaxSlow);
-            float hp = Random.Range(_settings.HPSMinSlow, _settings.HPMaxSlow);
-            var enemyFacade = _enemyFactory.Create(hp, speed);
-            enemyFacade.Position = ChooseRandomStartPosition();
+            float value = Random.Range(0f, 1f);
+            
+            float speed;
+            float hp;
+            if (value <= 0.5)
+            {
+                speed = Random.Range(_settings.SpeedMinEnemy1, _settings.SpeedMaxEnemy1);
+                hp = Random.Range(_settings.HPSMinEnemy1, _settings.HPMaxEnemy1);
+            }
+            else
+            {
+                speed = Random.Range(_settings.SpeedMinEnemy2, _settings.SpeedMaxEnemy2);
+                hp = Random.Range(_settings.HPSMinEnemy2, _settings.HPMaxEnemy2);
+            }
+
+            GameObject gameObject;
+            //Debug.LogError(value);
+            if (value <= 0.5)
+            {
+                gameObject = _gameSettings.Enemy1FacadePrefab;
+            }
+            else
+            {
+                gameObject = _gameSettings.Enemy2FacadePrefab;
+            }
+
+            Vector3 position = ChooseRandomStartPosition();
+            EnemyFacade enemyFacade = _enemyFactory.Create(hp, speed, gameObject);
+            enemyFacade.Position = position;
 
             _lastSpawnTime = Time.realtimeSinceStartup;
         }
@@ -99,11 +129,17 @@ namespace Misc
         [Serializable]
         public class Settings
         {
-            public float SpeedMinSlow;
-            public float SpeedMaxSlow;
+            public float SpeedMinEnemy1;
+            public float SpeedMaxEnemy1;
 
-            public float HPSMinSlow;
-            public float HPMaxSlow;
+            public float HPSMinEnemy1;
+            public float HPMaxEnemy1;
+            
+            public float SpeedMinEnemy2;
+            public float SpeedMaxEnemy2;
+
+            public float HPSMinEnemy2;
+            public float HPMaxEnemy2;
 
             public float NumEnemiesIncreaseRate;
             public float NumEnemiesSlowStartAmount;

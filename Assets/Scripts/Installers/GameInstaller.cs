@@ -17,14 +17,14 @@ namespace Installers
             Container.Bind<Progress>().AsSingle();
             Container.Bind<Camera>().FromComponentInHierarchy().AsSingle();
             Container.BindInterfacesAndSelfTo<EnemySpawner>().AsSingle();
-            Container.BindFactory<float, float, EnemyFacade, EnemyFacade.Factory>()
+            Container.BindFactory<float, float, GameObject, EnemyFacade, EnemyFacade.Factory>()
                 // We could just use FromMonoPoolableMemoryPool here instead, but
                 // for IL2CPP to work we need our pool class to be used explicitly here
-                .FromPoolableMemoryPool<float, float, EnemyFacade, EnemyFacadePool>(poolBinder => poolBinder
+                .FromPoolableMemoryPool<float, float, GameObject, EnemyFacade, EnemyFacadePool>(poolBinder => poolBinder
                     // Spawn 5 enemies right off the bat so that we don't incur spikes at runtime
                     .WithInitialSize(5)
                     .FromSubContainerResolve()
-                    .ByNewPrefabInstaller<EnemyInstaller>(_settings.EnemyFacadePrefab)
+                    .ByNewPrefabInstaller<EnemyInstaller>(_settings.EnemyHolderPrefab)
                     // Place each enemy under an Enemies game object at the root of scene hierarchy
                     .UnderTransformGroup("Enemies"));
             
@@ -49,7 +49,7 @@ namespace Installers
             GameSignalsInstaller.Install(Container);
         }
         
-        class EnemyFacadePool : MonoPoolableMemoryPool<float, float, IMemoryPool, EnemyFacade>
+        class EnemyFacadePool : MonoPoolableMemoryPool<float, float, GameObject, IMemoryPool, EnemyFacade>
         {
         }
         
@@ -60,7 +60,9 @@ namespace Installers
         [Serializable]
         public class Settings
         {
-            public GameObject EnemyFacadePrefab;
+            public GameObject EnemyHolderPrefab;
+            public GameObject Enemy1FacadePrefab;
+            public GameObject Enemy2FacadePrefab;
             public GameObject BulletPrefab;
             public int EnemyKillNumberToReachNextLevel;
         }
