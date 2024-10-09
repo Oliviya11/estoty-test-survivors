@@ -38,13 +38,6 @@ namespace Misc
                     SceneManager.UnloadSceneAsync(BootScene);
                     SceneManager.LoadScene(GameplayScene);
                 }
-                /*
-                else
-                {
-                    SceneManager.UnloadSceneAsync(BootScene);
-                    SceneManager.LoadSceneAsync(GameplayScene);
-                }
-                */
             }
         }
 
