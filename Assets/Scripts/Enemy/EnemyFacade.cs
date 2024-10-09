@@ -1,4 +1,5 @@
 ﻿using System;
+using UI;
 using UnityEngine;
 using Zenject;
 
@@ -10,40 +11,40 @@ namespace Enemy
         EnemyTunables _tunables;
         EnemyRegistry _registry;
         IMemoryPool _pool;
+        EnemyHitDeathHandler _enemyHitDeathHandler;
 
         float health;
         public float Health
         {
             get => health;
-            set
-            {
-                float healthBefore = health;
-                health = value;
-                if (health <= 0)
-                {
-                    PlayDeath();
-                }
-                else if (healthBefore > health)
-                {
-                    PlayHit();
-                }
-            }
+            set => health = value;
         }
+
+        public float MaxHP => _tunables.MaxHP;
 
         public Vector3 Position
         {
             set { _view.Position = value; }
         }
+
+        public HPBar HpBar => _view.HpBar;
         
+        public bool IsDead
+        {
+            get; set;
+        }
+
         [Inject]
         public void Construct(
             EnemyView view,
             EnemyTunables tunables,
-            EnemyRegistry registry)
+            EnemyRegistry registry,
+            EnemyHitDeathHandler enemyHitDeathHandler)
         {
             _view = view;
             _tunables = tunables;
             _registry = registry;
+            _enemyHitDeathHandler = enemyHitDeathHandler;
         }
 
         public void OnDespawned()
@@ -58,6 +59,8 @@ namespace Enemy
             _tunables.MaxHP = maxHp;
             _tunables.Speed = speed;
             Health = maxHp;
+            _view.EnemyAnimator.Reset();
+            _view.Facade.IsDead = false;
 
             _registry.AddEnemy(this);
         }
@@ -72,16 +75,21 @@ namespace Enemy
             _view.Rigidbody.AddForce(force);
         }
 
-        public void PlayHit()
-        {
-            
-        }
-
         public void PlayDeath()
         {
             _view.EnemyAnimator.PlayDeath();
         }
-        
+
+        public void PlayHit()
+        {
+            _view.EnemyAnimator.PlayHit();
+        }
+
+        public void Hit(float damage)
+        {
+            _enemyHitDeathHandler.Hit(damage);
+        }
+
         public class Factory : PlaceholderFactory<float, float, EnemyFacade>
         {
         }

@@ -8,7 +8,7 @@ namespace Player
 {
     public class PlayerShootHandler : ITickable
     {
-        const string Player = "Player";
+        const string HittableLayerName  = "Hittable";
         readonly PlayerFacade _player;
         readonly Settings _settings;
         readonly Bullet.Factory _bulletFactory;
@@ -25,7 +25,7 @@ namespace Player
             _player = player;
             _settings = settings;
             _bulletFactory = bulletFactory;
-            _layerMask = 1 << LayerMask.NameToLayer("Hittable");
+            _layerMask = 1 << LayerMask.NameToLayer(HittableLayerName);
         }
         
         public void Tick()
@@ -108,6 +108,10 @@ namespace Player
             foreach (Collider collider in colliders)
             {
                 if (collider == null) continue;
+                
+                EnemyFacade enemyFacade = collider.GetComponent<EnemyFacade>();
+                if (enemyFacade != null && enemyFacade.IsDead) continue;
+                
                 float distance = Vector3.Distance(_player.Position, collider.transform.position);
 
                 if (distance < closestDistance)

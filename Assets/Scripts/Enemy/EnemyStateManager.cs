@@ -33,13 +33,13 @@ namespace Enemy
         [Inject]
         public void Construct(
             EnemyView view,
-            EnemyStateIdle idle, EnemyStateAttack attack, EnemyStateFollow follow)
+            EnemyStateNone none, EnemyStateAttack attack, EnemyStateFollow follow)
         {
             _view = view;
             _states = new List<IEnemyState>
             {
                 // This needs to follow the enum order
-                idle, attack, follow
+                none, attack, follow
             };
         }
 

@@ -38,6 +38,8 @@ namespace Installers
                     .UnderTransformGroup("Bullets"));
             
             Container.Bind<EnemyRegistry>().AsSingle();
+            
+            GameSignalsInstaller.Install(Container);
         }
         
         class EnemyFacadePool : MonoPoolableMemoryPool<float, float, IMemoryPool, EnemyFacade>

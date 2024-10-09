@@ -18,6 +18,10 @@ namespace Enemy
         {
             _animator.SetBool(Dead, true);
         }
-        
+
+        public void Reset()
+        {
+            _animator.SetBool(Dead, false);
+        }
     }
 }

@@ -45,7 +45,7 @@ namespace Enemy.States
 
         public void Update()
         {
-            if (_player.IsDead)
+            if (_player.IsDead || _view.Facade.IsDead)
             {
                 _stateManager.ChangeState(EnemyStates.Idle);
                 return;

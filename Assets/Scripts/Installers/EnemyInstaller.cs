@@ -11,9 +11,10 @@ namespace Installers
         {
             Container.Bind<EnemyTunables>().AsSingle();
             Container.BindInterfacesAndSelfTo<EnemyStateManager>().AsSingle();
-            Container.Bind<EnemyStateIdle>().AsSingle();
+            Container.Bind<EnemyStateNone>().AsSingle();
             Container.Bind<EnemyStateAttack>().AsSingle();
             Container.Bind<EnemyStateFollow>().AsSingle();
+            Container.BindInterfacesAndSelfTo<EnemyHitDeathHandler>().AsSingle();
         }
     }
 }

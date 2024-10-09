@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UI;
+using UnityEngine;
 using Zenject;
 
 namespace Enemy
@@ -7,6 +8,8 @@ namespace Enemy
     {
         [SerializeField] Rigidbody _rigidBody;
         [SerializeField] EnemyAnimator _enemyAnimator;
+        [SerializeField] HPBar _hpBar;
+        
         [Inject]
         public EnemyFacade Facade
         {
@@ -21,5 +24,6 @@ namespace Enemy
         
         public Rigidbody Rigidbody => _rigidBody;
         public EnemyAnimator EnemyAnimator => _enemyAnimator;
+        public HPBar HpBar => _hpBar;
     }
 }

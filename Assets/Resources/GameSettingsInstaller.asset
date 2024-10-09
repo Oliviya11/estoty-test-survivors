@@ -17,7 +17,7 @@ MonoBehaviour:
     BulletPrefab: {fileID: 4861459498051629172, guid: d4e1df6d3815fbd48b860b354cd1f928, type: 3}
   Player:
     PlayerMoveHandler:
-      MoveSpeed: 20
+      MoveSpeed: 50
     CameraFollow:
       RotationAngleX: 0
       Distance: 9
@@ -30,26 +30,26 @@ MonoBehaviour:
       BulletDamage: 4
       BulletOffsetDistance: 0.3
       MaxShootInterval: 2
-      Range: 10
+      Range: 5
   Enemy:
     DefaultSettings:
-      MaxHP: 10
+      MaxHP: 5
       Speed: 4
     EnemyCommonSettings:
-      AttackDistance: 2
+      AttackDistance: 1
     EnemyStateFollow:
       StrafeMultiplier: 0.5
       StrafeChangeInterval: 0.8
       TeleportNewDistance: 40
     EnemyStateAttack:
       HitSound: {fileID: 0}
-      AttackRadius: 3
+      AttackRadius: 2
       HitInterval: 1
   EnemySpawner:
     SpeedMinSlow: 5
     SpeedMaxSlow: 10
-    HPSMinSlow: 80
-    HPMaxSlow: 100
+    HPSMinSlow: 30
+    HPMaxSlow: 40
     NumEnemiesIncreaseRate: 1
     NumEnemiesSlowStartAmount: 1
     NumEnemies2StartAmount: 0

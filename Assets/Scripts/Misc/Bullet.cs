@@ -28,11 +28,8 @@ namespace Misc
 
             if (enemyView != null)
             {
-                enemyView.Facade.Health -= _damage;
-                if (enemyView.Facade.Health < 0)
-                {
-                    _pool.Despawn(this);
-                }
+                enemyView.Facade.Hit(_damage);
+                _pool.Despawn(this);
             }
         }
 
