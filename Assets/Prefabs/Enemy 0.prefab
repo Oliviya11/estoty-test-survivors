@@ -306,6 +306,7 @@ MonoBehaviour:
   _rigidBody: {fileID: 1483204084452439497}
   _enemyAnimator: {fileID: 8139857064701159074}
   _hpBar: {fileID: 4317568056124663469}
+  _spriteRenderer: {fileID: 418403744209364939}
 --- !u!114 &4611966947403672269
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -100,15 +100,14 @@ namespace Player
         {
             // Get all colliders within the defined radius
             var size = Physics.OverlapSphereNonAlloc(_player.Position, _settings.Range, colliders, _layerMask);
-        
+            if (size == 0) return null;
+            
             Collider closestCollider = null;
             float closestDistance = Mathf.Infinity;
 
             // Loop through each collider and find the closest one
             foreach (Collider collider in colliders)
             {
-                if (collider == null) continue;
-                
                 EnemyFacade enemyFacade = collider.GetComponent<EnemyFacade>();
                 if (enemyFacade != null && enemyFacade.IsDead) continue;
                 

@@ -14,9 +14,6 @@ namespace Enemy.States
         readonly EnemyView _view;
         readonly PlayerFacade _player;
 
-        bool _strafeRight;
-        float _lastStrafeChangeTime;
-
         public EnemyStateFollow(
             PlayerFacade player,
             EnemyView view,
@@ -35,8 +32,7 @@ namespace Enemy.States
 
         public void EnterState()
         {
-            _strafeRight = Random.Range(0, 1) == 0;
-            _lastStrafeChangeTime = Time.realtimeSinceStartup;
+            
         }
 
         public void ExitState()
@@ -53,17 +49,6 @@ namespace Enemy.States
 
             var distanceToPlayer = (_player.Position - _view.Position).magnitude;
 
-            // Always look towards the player
-            //_rotationHandler.DesiredLookDir = (_player.Position - _view.Position).normalized;
-
-            // Strafe back and forth over the given interval
-            // This helps avoiding being too easy a target
-            if (Time.realtimeSinceStartup - _lastStrafeChangeTime > _settings.StrafeChangeInterval)
-            {
-                _lastStrafeChangeTime = Time.realtimeSinceStartup;
-                _strafeRight = !_strafeRight;
-            }
-
             if (distanceToPlayer < _commonSettings.AttackDistance)
             {
                 _stateManager.ChangeState(EnemyStates.Attack);
@@ -73,7 +58,6 @@ namespace Enemy.States
         public void FixedUpdate()
         {
             MoveTowardsPlayer();
-            //Strafe();
         }
 
         public void LateUpdate()
@@ -84,8 +68,20 @@ namespace Enemy.States
         void MoveTowardsPlayer()
         {
             var playerDir = (_player.Position - _view.Position).normalized;
-
             _view.Rigidbody.AddForce(playerDir * _tunables.Speed);
+            FlipX();
+        }
+
+        void FlipX()
+        {
+            if (_view.Position.x < _player.Position.x)
+            {
+                _view.Facade.FlipX(false);
+            }
+            else
+            {
+                _view.Facade.FlipX(true);
+            }
         }
 
         [Serializable]

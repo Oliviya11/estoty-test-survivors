@@ -9,6 +9,7 @@ namespace Enemy
         [SerializeField] Rigidbody _rigidBody;
         [SerializeField] EnemyAnimator _enemyAnimator;
         [SerializeField] HPBar _hpBar;
+        [SerializeField] SpriteRenderer _spriteRenderer;
         
         [Inject]
         public EnemyFacade Facade
@@ -25,5 +26,6 @@ namespace Enemy
         public Rigidbody Rigidbody => _rigidBody;
         public EnemyAnimator EnemyAnimator => _enemyAnimator;
         public HPBar HpBar => _hpBar;
+        public SpriteRenderer SpriteRenderer => _spriteRenderer;
     }
 }

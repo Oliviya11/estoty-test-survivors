@@ -95,6 +95,11 @@ namespace Enemy
             _view.Rigidbody.velocity = Vector3.zero;
         }
 
+        public void FlipX(bool value)
+        {
+            _view.SpriteRenderer.flipX = value;
+        }
+
         public class Factory : PlaceholderFactory<float, float, EnemyFacade>
         {
         }

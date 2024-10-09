@@ -25,12 +25,12 @@ MonoBehaviour:
     PlayerShootHandler:
       BulletClip: {fileID: 0}
       LaserVolume: 1
-      BulletLifetime: 5
+      BulletLifetime: 1
       BulletSpeed: 4
       BulletDamage: 4
       BulletOffsetDistance: 0.3
-      MaxShootInterval: 2
-      Range: 5
+      MaxShootInterval: 1
+      Range: 2
     PlayerDamageHandler:
       HealthLoss: 10
       HitSound: {fileID: 0}
