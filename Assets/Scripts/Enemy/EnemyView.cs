@@ -6,6 +6,7 @@ namespace Enemy
     public class EnemyView : MonoBehaviour
     {
         [SerializeField] Rigidbody _rigidBody;
+        [SerializeField] EnemyAnimator _enemyAnimator;
         [Inject]
         public EnemyFacade Facade
         {
@@ -18,23 +19,7 @@ namespace Enemy
             set { _rigidBody.transform.position = value; }
         }
         
-        public void AddForce(Vector3 force)
-        {
-            _rigidBody.AddForce(force);
-        }
-
-        public void Stop()
-        {
-            _rigidBody.velocity = Vector3.zero;
-        }
-        public Vector3 RightDir
-        {
-            get { return _rigidBody.transform.up; }
-        }
-
-        public Vector3 ForwardDir
-        {
-            get { return _rigidBody.transform.right; }
-        }
+        public Rigidbody Rigidbody => _rigidBody;
+        public EnemyAnimator EnemyAnimator => _enemyAnimator;
     }
 }

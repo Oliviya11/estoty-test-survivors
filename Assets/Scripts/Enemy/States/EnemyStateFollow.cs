@@ -66,7 +66,6 @@ namespace Enemy.States
 
             if (distanceToPlayer < _commonSettings.AttackDistance)
             {
-                Debug.LogError("Attack");
                 _stateManager.ChangeState(EnemyStates.Attack);
             }
         }
@@ -82,24 +81,11 @@ namespace Enemy.States
             
         }
 
-        void Strafe()
-        {
-            // Strafe to avoid getting hit too easily
-            if (_strafeRight)
-            {
-                _view.AddForce(_view.RightDir * _settings.StrafeMultiplier * _tunables.Speed);
-            }
-            else
-            {
-                _view.AddForce(-_view.RightDir * _settings.StrafeMultiplier * _tunables.Speed);
-            }
-        }
-
         void MoveTowardsPlayer()
         {
             var playerDir = (_player.Position - _view.Position).normalized;
 
-            _view.AddForce(playerDir * _tunables.Speed);
+            _view.Rigidbody.AddForce(playerDir * _tunables.Speed);
         }
 
         [Serializable]

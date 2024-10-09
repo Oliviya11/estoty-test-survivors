@@ -10,7 +10,26 @@ namespace Enemy
         EnemyTunables _tunables;
         EnemyRegistry _registry;
         IMemoryPool _pool;
-        
+
+        float health;
+        public float Health
+        {
+            get => health;
+            set
+            {
+                float healthBefore = health;
+                health = value;
+                if (health <= 0)
+                {
+                    PlayDeath();
+                }
+                else if (healthBefore > health)
+                {
+                    PlayHit();
+                }
+            }
+        }
+
         public Vector3 Position
         {
             set { _view.Position = value; }
@@ -38,6 +57,7 @@ namespace Enemy
             _pool = pool;
             _tunables.MaxHP = maxHp;
             _tunables.Speed = speed;
+            Health = maxHp;
 
             _registry.AddEnemy(this);
         }
@@ -45,6 +65,21 @@ namespace Enemy
         public void Dispose()
         {
             _pool.Despawn(this);
+        }
+        
+        public void AddForce(Vector3 force)
+        {
+            _view.Rigidbody.AddForce(force);
+        }
+
+        public void PlayHit()
+        {
+            
+        }
+
+        public void PlayDeath()
+        {
+            _view.EnemyAnimator.PlayDeath();
         }
         
         public class Factory : PlaceholderFactory<float, float, EnemyFacade>

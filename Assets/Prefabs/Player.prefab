@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6221576206697918277}
   - component: {fileID: 2548688727688414756}
   - component: {fileID: 3668107451186691087}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,8 +139,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0310113, y: 1.5142528, z: 0.2}
-  m_Center: {x: -0.0155056715, y: -0.13954896, z: 0}
+  m_Size: {x: 0.66244984, y: 1.0661153, z: 0.2}
+  m_Center: {x: 0.030564666, y: -0.03693813, z: 0}
 --- !u!114 &6221576206697918277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,7 +199,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5113105556956996517}
   - component: {fileID: 375922484433242945}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hand Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +214,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1679557700323483821}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.3, y: -0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -261,7 +261,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 4
   m_Sprite: {fileID: -144335857, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -283,7 +283,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4536464037317064103}
   - component: {fileID: 2137275305157410892}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -367,7 +367,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8277698378762058209}
   - component: {fileID: 820998923958654006}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hand Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -451,7 +451,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3262659525868238604}
   - component: {fileID: 1328075785936329493}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Installer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -488,3 +488,5 @@ MonoBehaviour:
   _settings:
     Rigidbody: {fileID: 5727250217084979349}
     MaxHealth: 100
+    Pistol: {fileID: 375922484433242945}
+    Self: {fileID: 5680689462691970148}

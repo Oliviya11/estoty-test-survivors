@@ -14,6 +14,7 @@ namespace Enemy.States
         readonly PlayerFacade _player;
         readonly Settings _settings;
         readonly EnemyView _view;
+        float _lastHitTime;
 
         public EnemyStateAttack(
             PlayerFacade player,
@@ -33,7 +34,6 @@ namespace Enemy.States
 
         public void EnterState()
         {
-            Debug.LogError("Enter Attack");
             //throw new System.NotImplementedException();
         }
 
@@ -44,10 +44,26 @@ namespace Enemy.States
 
         public void Update()
         {
+            if (_player.IsDead)
+            {
+                return;
+            }
+            
+            if (Time.realtimeSinceStartup - _lastHitTime > _settings.HitInterval)
+            {
+                _lastHitTime = Time.realtimeSinceStartup;
+                HitPlayer();
+            }
+            
             if ((_player.Position - _view.Position).magnitude > _commonSettings.AttackDistance)
             {
                 _stateManager.ChangeState(EnemyStates.Follow);
             }
+        }
+
+        void HitPlayer()
+        {
+            Debug.LogError("Hit player");
         }
 
         public void FixedUpdate()
@@ -63,8 +79,9 @@ namespace Enemy.States
         [Serializable]
         public class Settings
         {
-            public AudioClip MeleeSound;
+            public AudioClip HitSound;
             public float AttackRadius;
+            public float HitInterval;
         }
     }
 }

@@ -4,17 +4,23 @@ namespace Player
 {
     public class PlayerModel
     {
+        public SpriteRenderer Self;
+        public readonly SpriteRenderer Pistol;
         readonly Rigidbody _rigidBody;
         float _maxHealth;
         float _currentHealth;
-        
+
         public PlayerModel(
             Rigidbody rigidBody,
-            float maxHealth)
+            float maxHealth,
+            SpriteRenderer pistol,
+            SpriteRenderer self)
         {
             _rigidBody = rigidBody;
             _maxHealth = maxHealth;
             _currentHealth = maxHealth;
+            Pistol = pistol;
+            Self = self;
         }
         
         public Vector3 Position

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameInstaller:
     EnemyFacadePrefab: {fileID: 6723594372531577740, guid: f1f6fe73932a83d458ab77a2e0ee621e, type: 3}
-    BulletPrefab: {fileID: 0}
+    BulletPrefab: {fileID: 4861459498051629172, guid: d4e1df6d3815fbd48b860b354cd1f928, type: 3}
   Player:
     PlayerMoveHandler:
       MoveSpeed: 20
@@ -22,19 +22,29 @@ MonoBehaviour:
       RotationAngleX: 0
       Distance: 9
       OffsetY: 0.5
+    PlayerShootHandler:
+      BulletClip: {fileID: 0}
+      LaserVolume: 1
+      BulletLifetime: 5
+      BulletSpeed: 4
+      BulletDamage: 4
+      BulletOffsetDistance: 0.3
+      MaxShootInterval: 2
+      Range: 10
   Enemy:
     DefaultSettings:
       MaxHP: 10
       Speed: 4
     EnemyCommonSettings:
-      AttackDistance: 1
+      AttackDistance: 2
     EnemyStateFollow:
       StrafeMultiplier: 0.5
       StrafeChangeInterval: 0.8
       TeleportNewDistance: 40
     EnemyStateAttack:
-      MeleeSound: {fileID: 0}
+      HitSound: {fileID: 0}
       AttackRadius: 3
+      HitInterval: 1
   EnemySpawner:
     SpeedMinSlow: 5
     SpeedMaxSlow: 10
