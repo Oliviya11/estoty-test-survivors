@@ -16,6 +16,8 @@ MonoBehaviour:
     EnemyFacadePrefab: {fileID: 6723594372531577740, guid: f1f6fe73932a83d458ab77a2e0ee621e, type: 3}
     BulletPrefab: {fileID: 4861459498051629172, guid: d4e1df6d3815fbd48b860b354cd1f928, type: 3}
     EnemyKillNumberToReachNextLevel: 10
+  GameRestartHandler:
+    RestartDelay: 3
   Player:
     PlayerMoveHandler:
       MoveSpeed: 50

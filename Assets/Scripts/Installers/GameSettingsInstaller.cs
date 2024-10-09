@@ -12,6 +12,7 @@ namespace Installers
     public class GameSettingsInstaller : ScriptableObjectInstaller<GameSettingsInstaller>
     {
         public GameInstaller.Settings GameInstaller;
+        public GameRestartHandler.Settings GameRestartHandler;
         public PlayerSettings Player;
         public EnemySettings Enemy;
         public EnemySpawner.Settings EnemySpawner;
@@ -37,6 +38,7 @@ namespace Installers
         public override void InstallBindings()
         {
             Container.BindInstance(GameInstaller).IfNotBound();
+            Container.BindInstance(GameRestartHandler).IfNotBound();
             Container.BindInstance(Player.PlayerMoveHandler).IfNotBound();
             Container.BindInstance(Player.CameraFollow).IfNotBound();
             Container.BindInstance(Player.PlayerShootHandler).IfNotBound();

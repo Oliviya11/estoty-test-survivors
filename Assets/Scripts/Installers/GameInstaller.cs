@@ -41,6 +41,8 @@ namespace Installers
             
             Container.Bind<EnemyRegistry>().AsSingle();
             
+            Container.BindInterfacesTo<GameRestartHandler>().AsSingle();
+            
             Container.BindInterfacesAndSelfTo<SliderBarHP>().FromComponentInHierarchy().AsSingle();
             Container.BindInterfacesAndSelfTo<SliderExp>().FromComponentInHierarchy().AsSingle();
             
