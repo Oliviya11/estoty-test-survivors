@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Misc;
+using UnityEngine;
 
 namespace Player
 {
@@ -6,6 +7,7 @@ namespace Player
     {
         public SpriteRenderer Self;
         public readonly SpriteRenderer Pistol;
+        public readonly PingPongColor PingPongColor;
         readonly Rigidbody _rigidBody;
         float _maxHealth;
         float _currentHealth;
@@ -14,13 +16,15 @@ namespace Player
             Rigidbody rigidBody,
             float maxHealth,
             SpriteRenderer pistol,
-            SpriteRenderer self)
+            SpriteRenderer self,
+            PingPongColor pingPongColor)
         {
             _rigidBody = rigidBody;
             _maxHealth = maxHealth;
             _currentHealth = maxHealth;
             Pistol = pistol;
             Self = self;
+            PingPongColor = pingPongColor;
         }
         
         public Vector3 Position

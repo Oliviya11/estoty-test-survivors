@@ -63,7 +63,7 @@ namespace Enemy.States
 
         void HitPlayer()
         {
-            Debug.LogError("Hit player");
+            _player.PingPongColor.Launch();
         }
 
         public void FixedUpdate()

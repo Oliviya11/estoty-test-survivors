@@ -1,4 +1,5 @@
 ﻿using System;
+using Misc;
 using Player;
 using UnityEngine;
 using Zenject;
@@ -13,7 +14,8 @@ namespace Installers
         public override void InstallBindings()
         {
             Container.Bind<PlayerModel>().AsSingle()
-                .WithArguments(_settings.Rigidbody, _settings.MaxHealth, _settings.Pistol, _settings.Self);
+                .WithArguments(_settings.Rigidbody, _settings.MaxHealth, _settings.Pistol, _settings.Self,
+                    _settings.PingPongColor);
             
             Container.BindInterfacesTo<PlayerInputHandler>().AsSingle();
             Container.BindInterfacesTo<PlayerMoveHandler>().AsSingle();
@@ -29,6 +31,7 @@ namespace Installers
             public float MaxHealth;
             public SpriteRenderer Pistol;
             public SpriteRenderer Self;
+            public PingPongColor PingPongColor;
         }
     }
 }

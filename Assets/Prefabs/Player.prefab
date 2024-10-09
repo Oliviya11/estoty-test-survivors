@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6221576206697918277}
   - component: {fileID: 2548688727688414756}
   - component: {fileID: 3668107451186691087}
+  - component: {fileID: 7102894931361760867}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -189,6 +190,23 @@ MonoBehaviour:
   _installerPrefabs: []
   _autoRun: 1
   _kernel: {fileID: 0}
+--- !u!114 &7102894931361760867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728152719562234571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05c11f5ca82748f0ad90c7a709194888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 5680689462691970148}
+  startColor: {r: 1, g: 1, b: 1, a: 1}
+  targetColor: {r: 1, g: 0, b: 0, a: 1}
+  pingPongDuration: 0.5
+  duration: 1.5
 --- !u!1 &1679557700323483821
 GameObject:
   m_ObjectHideFlags: 0
@@ -490,3 +508,4 @@ MonoBehaviour:
     MaxHealth: 100
     Pistol: {fileID: 375922484433242945}
     Self: {fileID: 5680689462691970148}
+    PingPongColor: {fileID: 7102894931361760867}

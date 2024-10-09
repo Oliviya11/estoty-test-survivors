@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Misc;
+using UnityEngine;
 using Zenject;
 
 namespace Player
@@ -23,6 +24,8 @@ namespace Player
         {
             get { return _model.Position; }
         }
+
+        public PingPongColor PingPongColor => _model.PingPongColor;
 
         public void Flip(bool flip)
         {
