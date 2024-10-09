@@ -64,6 +64,7 @@ namespace Enemy.States
         void HitPlayer()
         {
             _player.PingPongColor.Launch();
+            _player.TakeDamage();
         }
 
         public void FixedUpdate()

@@ -47,5 +47,14 @@ namespace Player
         {
             get; set;
         }
+
+        public float CurrentHealth => _currentHealth;
+
+        public float MaxHealth => _maxHealth;
+        
+        public void TakeDamage(float healthLoss)
+        {
+            _currentHealth = Mathf.Max(0.0f, _currentHealth - healthLoss);
+        }
     }
 }

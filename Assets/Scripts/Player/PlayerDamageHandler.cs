@@ -3,13 +3,13 @@ using UnityEngine;
 
 namespace Player
 {
-    public class PlayerHitHandler
+    public class PlayerDamageHandler
     {
         //readonly AudioPlayer _audioPlayer;
         readonly Settings _settings;
         readonly PlayerModel _player;
 
-        public PlayerHitHandler(
+        public PlayerDamageHandler(
             PlayerModel player,
             Settings settings
             //AudioPlayer audioPlayer
@@ -20,11 +20,15 @@ namespace Player
             _player = player;
         }
         
+        public void TakeDamage()
+        {
+            _player.TakeDamage(_settings.HealthLoss);
+        }
+        
         [Serializable]
         public class Settings
         {
             public float HealthLoss;
-            public float HitForce;
 
             public AudioClip HitSound;
             public float HitSoundVolume = 1.0f;

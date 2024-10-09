@@ -22,6 +22,7 @@ namespace Installers
             public PlayerMoveHandler.Settings PlayerMoveHandler;
             public CameraFollow.Settings CameraFollow;
             public PlayerShootHandler.Settings PlayerShootHandler;
+            public PlayerDamageHandler.Settings PlayerDamageHandler;
         }
 
         [Serializable]
@@ -39,6 +40,7 @@ namespace Installers
             Container.BindInstance(Player.PlayerMoveHandler).IfNotBound();
             Container.BindInstance(Player.CameraFollow).IfNotBound();
             Container.BindInstance(Player.PlayerShootHandler).IfNotBound();
+            Container.BindInstance(Player.PlayerDamageHandler).IfNotBound();
             Container.BindInstance(EnemySpawner).IfNotBound();
             Container.BindInstance(Enemy.EnemyCommonSettings).IfNotBound();
             Container.BindInstance(Enemy.EnemyStateFollow).IfNotBound();
