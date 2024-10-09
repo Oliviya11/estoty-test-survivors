@@ -1,4 +1,7 @@
 ﻿using System.Collections;
+using Installers;
+using Misc;
+using Player;
 using UnityEngine;
 using Zenject;
 using Zenject.SpaceFighter;
@@ -14,6 +17,8 @@ namespace Enemy
         //readonly Explosion.Factory _explosionFactory;
         //readonly AudioPlayer _audioPlayer;
         readonly EnemyView _view;
+        readonly Progress _progress;
+        int _killedEnemies = 0;
 
         public EnemyHitDeathHandler(
             EnemyView view,
@@ -21,7 +26,8 @@ namespace Enemy
             //Explosion.Factory explosionFactory,
             //Settings settings,
             SignalBus signalBus,
-            EnemyFacade facade)
+            EnemyFacade facade,
+            Progress progress)
         {
             _facade = facade;
             _signalBus = signalBus;
@@ -29,6 +35,7 @@ namespace Enemy
             //_explosionFactory = explosionFactory;
             //_audioPlayer = audioPlayer;
             _view = view;
+            _progress = progress;
         }
 
         public void Hit(float damage)
@@ -42,6 +49,8 @@ namespace Enemy
                 _view.Facade.PlayDeath();
                 _view.Facade.IsDead = true;
                 _view.Facade.StartCoroutine(Dispose());
+                ++_progress.KilledEnemiesNumber;
+                _signalBus.Fire(new KillEnemySignal(_progress.KilledEnemiesNumber));
             }
             else
             {

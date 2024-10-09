@@ -14,6 +14,7 @@ namespace Installers
         
         public override void InstallBindings()
         {
+            Container.Bind<Progress>().AsSingle();
             Container.Bind<Camera>().FromComponentInHierarchy().AsSingle();
             Container.BindInterfacesAndSelfTo<EnemySpawner>().AsSingle();
             Container.BindFactory<float, float, EnemyFacade, EnemyFacade.Factory>()
@@ -41,6 +42,7 @@ namespace Installers
             Container.Bind<EnemyRegistry>().AsSingle();
             
             Container.BindInterfacesAndSelfTo<SliderBarHP>().FromComponentInHierarchy().AsSingle();
+            Container.BindInterfacesAndSelfTo<SliderExp>().FromComponentInHierarchy().AsSingle();
             
             GameSignalsInstaller.Install(Container);
         }
@@ -58,6 +60,7 @@ namespace Installers
         {
             public GameObject EnemyFacadePrefab;
             public GameObject BulletPrefab;
+            public int EnemyKillNumberToReachNextLevel;
         }
     }
 }

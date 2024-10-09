@@ -11,6 +11,7 @@ namespace Installers
             
             Container.DeclareSignal<PlayerDiedSignal>();
             Container.DeclareSignal<PlayerGotDamageSignal>();
+            Container.DeclareSignal<KillEnemySignal>();
             
             //Container.BindSignal<PlayerGotDamageSignal>().ToMethod<SliderBar>(x => x.UpdateSlider).FromNew();
         }

@@ -61,7 +61,7 @@ namespace Enemy
             Health = maxHp;
             _view.EnemyAnimator.Reset();
             _view.Facade.IsDead = false;
-
+            _view.HpBar.SetValue(_view.Facade.Health, _view.Facade.MaxHP);
             _registry.AddEnemy(this);
         }
 
