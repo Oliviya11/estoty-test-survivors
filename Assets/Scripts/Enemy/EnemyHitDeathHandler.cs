@@ -38,6 +38,7 @@ namespace Enemy
                 _view.Facade.Health -= damage;
             if (_view.Facade.Health <= 0)
             {
+                _view.Facade.Stop();
                 _view.Facade.PlayDeath();
                 _view.Facade.IsDead = true;
                 _view.Facade.StartCoroutine(Dispose());

@@ -90,6 +90,11 @@ namespace Enemy
             _enemyHitDeathHandler.Hit(damage);
         }
 
+        public void Stop()
+        {
+            _view.Rigidbody.velocity = Vector3.zero;
+        }
+
         public class Factory : PlaceholderFactory<float, float, EnemyFacade>
         {
         }
