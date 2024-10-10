@@ -48,6 +48,14 @@ namespace Player
                     Vector3.down * _settings.MoveSpeed);
             }
 
+            if (_player.IsRunning())
+            {
+                _player.PlayerAnimator.PlayRun();
+            }
+            else
+            {
+                _player.PlayerAnimator.PlayIdle();
+            }
             // Always ensure we are on the main plane
             //_player.Position = new Vector3(_player.Position.x, _player.Position.y, 0);
         }

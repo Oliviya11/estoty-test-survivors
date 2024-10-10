@@ -15,7 +15,7 @@ namespace Installers
         {
             Container.Bind<PlayerModel>().AsSingle()
                 .WithArguments(_settings.Rigidbody, _settings.MaxHealth, _settings.Pistol, _settings.Self,
-                    _settings.PingPongColor);
+                    _settings.PingPongColor, _settings.PlayerAnimator);
             
             Container.BindInterfacesTo<PlayerInputHandler>().AsSingle();
             Container.BindInterfacesTo<PlayerMoveHandler>().AsSingle();
@@ -34,6 +34,7 @@ namespace Installers
             public SpriteRenderer Pistol;
             public SpriteRenderer Self;
             public PingPongColor PingPongColor;
+            public PlayerAnimator PlayerAnimator;
         }
     }
 }

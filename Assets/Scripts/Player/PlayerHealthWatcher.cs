@@ -1,4 +1,6 @@
-﻿using Installers;
+﻿using System.Collections;
+using Installers;
+using UnityEngine;
 using Zenject;
 
 namespace Player
@@ -25,6 +27,13 @@ namespace Player
         void Die()
         {
             _player.IsDead = true;
+            _player.PlayerAnimator.PlayDeath();
+            _player.PlayerAnimator.StartCoroutine(FireDie());
+        }
+
+        IEnumerator FireDie()
+        {
+            yield return new WaitForSeconds(2);
             _signalBus.Fire<PlayerDiedSignal>();
         }
     }

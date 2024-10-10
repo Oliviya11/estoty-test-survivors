@@ -5,7 +5,9 @@ namespace Player
 {
     public class PlayerModel
     {
+        const float Epsilon = 0.01f;
         public SpriteRenderer Self;
+        public readonly PlayerAnimator PlayerAnimator;
         public readonly SpriteRenderer Pistol;
         public readonly PingPongColor PingPongColor;
         readonly Rigidbody _rigidBody;
@@ -17,7 +19,8 @@ namespace Player
             float maxHealth,
             SpriteRenderer pistol,
             SpriteRenderer self,
-            PingPongColor pingPongColor)
+            PingPongColor pingPongColor,
+            PlayerAnimator playerAnimator)
         {
             _rigidBody = rigidBody;
             _maxHealth = maxHealth;
@@ -25,6 +28,7 @@ namespace Player
             Pistol = pistol;
             Self = self;
             PingPongColor = pingPongColor;
+            PlayerAnimator = playerAnimator;
         }
         
         public Vector3 Position
@@ -42,6 +46,8 @@ namespace Player
         {
             _rigidBody.AddForce(force);
         }
+
+        public bool IsRunning() => _rigidBody.velocity.sqrMagnitude >= Epsilon;
 
         public bool IsDead
         {
