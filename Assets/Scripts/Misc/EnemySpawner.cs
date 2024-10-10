@@ -4,6 +4,7 @@ using Enemy;
 using Installers;
 using Player;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 using Random = UnityEngine.Random;
 
@@ -32,7 +33,7 @@ namespace Misc
             _camera = camera;
             _gameSettings = gameSettings;
 
-            _desiredNumSlowEnemies = settings.NumEnemiesSlowStartAmount;
+            _desiredNumSlowEnemies = settings.NumEnemiesStartAmount;
         }
 
         public void Initialize()
@@ -58,7 +59,8 @@ namespace Misc
             
             float speed;
             float hp;
-            if (value <= 0.5)
+            
+            if (value <= _settings.EnemiesSlowProbability)
             {
                 speed = Random.Range(_settings.SpeedMinSlowEnemy, _settings.SpeedMaxSlowEnemy);
                 hp = Random.Range(_settings.HPSMinSlowEnemy, _settings.HPMaxSlowEnemy);
@@ -70,7 +72,7 @@ namespace Misc
             }
 
             EnemyType enemyType;
-            enemyType =(value <= 0.5) ? EnemyType.Slow : EnemyType.Fast;
+            enemyType = value <= _settings.EnemiesSlowProbability ? EnemyType.Slow : EnemyType.Fast;
 
             Vector3 position = ChooseRandomStartPosition();
             EnemyFacade enemyFacade = _enemyFactory.Create(hp, speed, enemyType);
@@ -134,10 +136,11 @@ namespace Misc
             public float HPMaxFastEnemy;
 
             public float NumEnemiesIncreaseRate;
-            public float NumEnemiesSlowStartAmount;
-            public float NumEnemies2StartAmount;
+            public float NumEnemiesStartAmount;
 
             public float MinDelayBetweenSpawns = 0.5f;
+            [Range(0, 1)]
+            public float EnemiesSlowProbability = 0.5f;
         }
     }
 }

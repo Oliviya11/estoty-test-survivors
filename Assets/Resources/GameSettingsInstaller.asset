@@ -63,13 +63,13 @@ MonoBehaviour:
   EnemySpawner:
     SpeedMinSlowEnemy: 3
     SpeedMaxSlowEnemy: 5
-    HPSMinSlowEnemy: 40
-    HPMaxSlowEnemy: 50
+    HPSMinSlowEnemy: 50
+    HPMaxSlowEnemy: 70
     SpeedMinFastEnemy: 7
     SpeedMaxFastEnemy: 10
-    HPSMinFastEnemy: 10
-    HPMaxFastEnemy: 20
-    NumEnemiesIncreaseRate: 1
-    NumEnemiesSlowStartAmount: 1
-    NumEnemies2StartAmount: 0
+    HPSMinFastEnemy: 20
+    HPMaxFastEnemy: 40
+    NumEnemiesIncreaseRate: 2
+    NumEnemiesStartAmount: 3
     MinDelayBetweenSpawns: 10
+    EnemiesSlowProbability: 0.5
