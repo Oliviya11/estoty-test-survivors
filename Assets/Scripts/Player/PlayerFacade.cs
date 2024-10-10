@@ -28,10 +28,19 @@ namespace Player
 
         public PingPongColor PingPongColor => _model.PingPongColor;
 
-        public void Flip(bool flip)
+        public void FlipXPlayer(bool flip)
         {
             _model.Self.flipX = flip;
+        }
+
+        public void FlipYPistol(bool flip)
+        {
             _model.Pistol.flipY = flip;
+        }
+        
+        public void FlipXPistol(bool flip)
+        {
+            _model.Pistol.flipX = flip;
         }
 
         public void TakeDamage()

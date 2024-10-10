@@ -14,6 +14,7 @@ namespace Player
         readonly Settings _settings;
         readonly Bullet.Factory _bulletFactory;
         readonly AudioPlayer _audioPlayer;
+        readonly PlayerInputState _inputState;
         float _lastFireTime;
         private LayerMask layerMask;
         private Collider[] colliders = new Collider[1];
@@ -23,12 +24,14 @@ namespace Player
             Bullet.Factory bulletFactory,
             Settings settings,
             PlayerFacade player,
-            AudioPlayer audioPlayer)
+            AudioPlayer audioPlayer,
+            PlayerInputState inputState)
         {
             _player = player;
             _settings = settings;
             _bulletFactory = bulletFactory;
             _audioPlayer = audioPlayer;
+            _inputState = inputState;
             _layerMask = 1 << LayerMask.NameToLayer(HittableLayerName);
         }
         
@@ -59,18 +62,34 @@ namespace Player
                 LaunchBullet(direction, quaternion);
                 _audioPlayer.Play(_settings.BulletClip, _settings.BulletVolume);
             }
+            else
+            {
+                RotatePlayer(_inputState.IsMovingLeft);
+                _player._model.Pistol.transform.eulerAngles = Vector3.zero;
+            }
         }
 
         void RotatePlayer(Transform target)
         {
             if (target.position.x < _player.Position.x)
             {
-                _player.Flip(true);
+                _player.FlipXPlayer(true);
+                _player.FlipYPistol(true);
             }
             else
             {
-                _player.Flip(false);
+                _player.FlipXPlayer(false);
+                _player.FlipYPistol(false);
             }
+            
+            _player.FlipXPistol(false);
+        }
+
+        void RotatePlayer(bool isLeft)
+        {
+            _player.FlipXPlayer(isLeft);
+            _player.FlipXPistol(isLeft);
+            _player.FlipYPistol(false);
         }
 
         void RotatePistolTowardsEnemy(Quaternion quaternion)
