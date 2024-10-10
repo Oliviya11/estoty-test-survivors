@@ -60,28 +60,20 @@ namespace Misc
             float hp;
             if (value <= 0.5)
             {
-                speed = Random.Range(_settings.SpeedMinEnemy1, _settings.SpeedMaxEnemy1);
-                hp = Random.Range(_settings.HPSMinEnemy1, _settings.HPMaxEnemy1);
+                speed = Random.Range(_settings.SpeedMinSlowEnemy, _settings.SpeedMaxSlowEnemy);
+                hp = Random.Range(_settings.HPSMinSlowEnemy, _settings.HPMaxSlowEnemy);
             }
             else
             {
-                speed = Random.Range(_settings.SpeedMinEnemy2, _settings.SpeedMaxEnemy2);
-                hp = Random.Range(_settings.HPSMinEnemy2, _settings.HPMaxEnemy2);
+                speed = Random.Range(_settings.SpeedMinFastEnemy, _settings.SpeedMaxFastEnemy);
+                hp = Random.Range(_settings.HPSMinFastEnemy, _settings.HPMaxFastEnemy);
             }
 
-            GameObject gameObject;
-            //Debug.LogError(value);
-            if (value <= 0.5)
-            {
-                gameObject = _gameSettings.Enemy1FacadePrefab;
-            }
-            else
-            {
-                gameObject = _gameSettings.Enemy2FacadePrefab;
-            }
+            EnemyType enemyType;
+            enemyType =(value <= 0.5) ? EnemyType.Slow : EnemyType.Fast;
 
             Vector3 position = ChooseRandomStartPosition();
-            EnemyFacade enemyFacade = _enemyFactory.Create(hp, speed);
+            EnemyFacade enemyFacade = _enemyFactory.Create(hp, speed, enemyType);
             enemyFacade.Position = position;
 
             _lastSpawnTime = Time.realtimeSinceStartup;
@@ -129,17 +121,17 @@ namespace Misc
         [Serializable]
         public class Settings
         {
-            public float SpeedMinEnemy1;
-            public float SpeedMaxEnemy1;
+            public float SpeedMinSlowEnemy;
+            public float SpeedMaxSlowEnemy;
 
-            public float HPSMinEnemy1;
-            public float HPMaxEnemy1;
+            public float HPSMinSlowEnemy;
+            public float HPMaxSlowEnemy;
             
-            public float SpeedMinEnemy2;
-            public float SpeedMaxEnemy2;
+            public float SpeedMinFastEnemy;
+            public float SpeedMaxFastEnemy;
 
-            public float HPSMinEnemy2;
-            public float HPMaxEnemy2;
+            public float HPSMinFastEnemy;
+            public float HPMaxFastEnemy;
 
             public float NumEnemiesIncreaseRate;
             public float NumEnemiesSlowStartAmount;

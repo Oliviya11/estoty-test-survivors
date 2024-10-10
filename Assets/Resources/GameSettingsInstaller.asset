@@ -13,9 +13,7 @@ MonoBehaviour:
   m_Name: GameSettingsInstaller
   m_EditorClassIdentifier: 
   GameInstaller:
-    EnemyHolderPrefab: {fileID: 737642905986729916, guid: dbe4dba26c07b2744a364147a54ceca0, type: 3}
-    Enemy1FacadePrefab: {fileID: 6723594372531577740, guid: f1f6fe73932a83d458ab77a2e0ee621e, type: 3}
-    Enemy2FacadePrefab: {fileID: 4214044029595277894, guid: fdee8cffd544d6f499708aed7a5a83ad, type: 3}
+    EnemyPrefab: {fileID: 737642905986729916, guid: dbe4dba26c07b2744a364147a54ceca0, type: 3}
     BulletPrefab: {fileID: 4861459498051629172, guid: d4e1df6d3815fbd48b860b354cd1f928, type: 3}
     EnemyKillNumberToReachNextLevel: 10
   GameRestartHandler:
@@ -55,14 +53,14 @@ MonoBehaviour:
       AttackRadius: 2
       HitInterval: 1
   EnemySpawner:
-    SpeedMinEnemy1: 5
-    SpeedMaxEnemy1: 7
-    HPSMinEnemy1: 10
-    HPMaxEnemy1: 20
-    SpeedMinEnemy2: 7
-    SpeedMaxEnemy2: 9
-    HPSMinEnemy2: 5
-    HPMaxEnemy2: 10
+    SpeedMinSlowEnemy: 3
+    SpeedMaxSlowEnemy: 5
+    HPSMinSlowEnemy: 40
+    HPMaxSlowEnemy: 50
+    SpeedMinFastEnemy: 7
+    SpeedMaxFastEnemy: 10
+    HPSMinFastEnemy: 10
+    HPMaxFastEnemy: 20
     NumEnemiesIncreaseRate: 1
     NumEnemiesSlowStartAmount: 1
     NumEnemies2StartAmount: 0

@@ -25,9 +25,7 @@ namespace Misc
         
         public void OnTriggerEnter(Collider other)
         {
-            if (other.transform.parent == null) return;
-            
-            var enemyView = other.transform.parent.GetComponent<EnemyView>();
+            var enemyView = other.transform.GetComponent<EnemyView>();
             
             if (enemyView != null)
             {

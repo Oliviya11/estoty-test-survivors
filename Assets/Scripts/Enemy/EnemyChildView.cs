@@ -6,9 +6,7 @@ namespace Player
 {
     public class EnemyChildView : MonoBehaviour
     {
-        public Rigidbody _rigidBody;
-        public EnemyAnimator _enemyAnimator;
-        public HPBar _hpBar;
-        public SpriteRenderer _spriteRenderer;
+        public SpriteRenderer SpriteRenderer;
+        public Animator Animator;
     }
 }
