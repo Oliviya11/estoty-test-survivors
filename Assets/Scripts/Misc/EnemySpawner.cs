@@ -61,7 +61,7 @@ namespace Misc
             float speed;
             float hp;
             
-            if (value <= _settings.EnemiesSlowProbability)
+            if (value <= _settings.EnemySlowProbability)
             {
                 speed = Random.Range(_settings.SpeedMinSlowEnemy, _settings.SpeedMaxSlowEnemy);
                 hp = Random.Range(_settings.HPSMinSlowEnemy, _settings.HPMaxSlowEnemy);
@@ -73,7 +73,7 @@ namespace Misc
             }
 
             EnemyType enemyType;
-            enemyType = value <= _settings.EnemiesSlowProbability ? EnemyType.Slow : EnemyType.Fast;
+            enemyType = value <= _settings.EnemySlowProbability ? EnemyType.Slow : EnemyType.Fast;
 
             Vector3 position = ChooseRandomStartPosition();
             EnemyFacade enemyFacade = _enemyFactory.Create(hp, speed, enemyType);
@@ -141,7 +141,7 @@ namespace Misc
 
             public float MinDelayBetweenSpawns = 0.5f;
             [Range(0, 1)]
-            public float EnemiesSlowProbability = 0.5f;
+            public float EnemySlowProbability = 0.5f;
         }
     }
 }

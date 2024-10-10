@@ -136,8 +136,9 @@ namespace Player
             {
                 EnemyFacade enemyFacade = collider.GetComponent<EnemyFacade>();
                 if (enemyFacade != null && enemyFacade.IsDead) continue;
-                
-                float distance = Vector3.Distance(_player.Position, collider.transform.position);
+
+                Vector3 diff = collider.transform.position - _player.Position;
+                float distance = diff.sqrMagnitude;
 
                 if (distance < closestDistance)
                 {
