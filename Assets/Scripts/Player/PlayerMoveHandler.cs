@@ -22,6 +22,8 @@ namespace Player
 
         public void FixedTick()
         {
+            if (_player.IsDead) return;
+            
             if (_inputState.IsMovingLeft)
             {
                 _player.AddForce(
