@@ -1,4 +1,5 @@
 ﻿using System;
+using Misc;
 using Player;
 using UnityEngine;
 
@@ -7,13 +8,12 @@ namespace Enemy.States
     public class EnemyStateAttack : IEnemyState
     {
         readonly EnemyCommonSettings _commonSettings;
-
-        //readonly AudioPlayer _audioPlayer;
         readonly EnemyTunables _tunables;
         readonly EnemyStateManager _stateManager;
         readonly PlayerFacade _player;
         readonly Settings _settings;
         readonly EnemyView _view;
+        readonly AudioPlayer _audioPlayer;
         float _lastHitTime;
 
         public EnemyStateAttack(
@@ -22,7 +22,8 @@ namespace Enemy.States
             EnemyStateManager stateManager,
             EnemyTunables tunables,
             Settings settings,
-            EnemyCommonSettings commonSettings)
+            EnemyCommonSettings commonSettings,
+            AudioPlayer audioPlayer)
         {
             _commonSettings = commonSettings;
             _settings = settings;
@@ -30,6 +31,7 @@ namespace Enemy.States
             _stateManager = stateManager;
             _view = view;
             _player = player;
+            _audioPlayer = audioPlayer;
         }
 
         public void EnterState()
@@ -55,7 +57,7 @@ namespace Enemy.States
                 HitPlayer();
             }
             
-            if ((_player.Position - _view.Position).magnitude > _commonSettings.AttackDistance)
+            if ((_player.Position - _view.Position).magnitude > -_commonSettings.AttackDistance)
             {
                 _stateManager.ChangeState(EnemyStates.Follow);
             }
@@ -65,6 +67,7 @@ namespace Enemy.States
         {
             _player.PingPongColor.Launch();
             _player.TakeDamage();
+            _audioPlayer.Play(_settings.HitSound, _settings.HitVolume);
         }
 
         public void FixedUpdate()
@@ -81,7 +84,7 @@ namespace Enemy.States
         public class Settings
         {
             public AudioClip HitSound;
-            public float AttackRadius;
+            public float HitVolume;
             public float HitInterval;
         }
     }

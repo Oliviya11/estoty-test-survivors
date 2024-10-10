@@ -1,5 +1,6 @@
 ﻿using System;
 using Enemy;
+using Misc;
 using UnityEngine;
 using Zenject;
 using Bullet = Misc.Bullet;
@@ -12,6 +13,7 @@ namespace Player
         readonly PlayerFacade _player;
         readonly Settings _settings;
         readonly Bullet.Factory _bulletFactory;
+        readonly AudioPlayer _audioPlayer;
         float _lastFireTime;
         private LayerMask layerMask;
         private Collider[] colliders = new Collider[1];
@@ -20,11 +22,13 @@ namespace Player
         public PlayerShootHandler(
             Bullet.Factory bulletFactory,
             Settings settings,
-            PlayerFacade player)
+            PlayerFacade player,
+            AudioPlayer audioPlayer)
         {
             _player = player;
             _settings = settings;
             _bulletFactory = bulletFactory;
+            _audioPlayer = audioPlayer;
             _layerMask = 1 << LayerMask.NameToLayer(HittableLayerName);
         }
         
@@ -53,6 +57,7 @@ namespace Player
                 RotatePlayer(collider.transform);
                 RotatePistolTowardsEnemy(quaternion);
                 LaunchBullet(direction, quaternion);
+                _audioPlayer.Play(_settings.BulletClip, _settings.BulletVolume);
             }
         }
 
@@ -128,7 +133,7 @@ namespace Player
         public class Settings
         {
             public AudioClip BulletClip;
-            public float LaserVolume = 1.0f;
+            public float BulletVolume = 1.0f;
 
             public float BulletLifetime;
             public float BulletSpeed;

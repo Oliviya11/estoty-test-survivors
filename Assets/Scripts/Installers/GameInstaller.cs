@@ -49,6 +49,8 @@ namespace Installers
             Container.BindInterfacesTo<SliderExp>().AsSingle();
             Container.BindInterfacesAndSelfTo<SliderExpView>().FromComponentInHierarchy().AsSingle();
             
+            Container.Bind<AudioPlayer>().AsSingle();
+            
             GameSignalsInstaller.Install(Container);
         }
         
@@ -66,6 +68,10 @@ namespace Installers
             public GameObject EnemyPrefab;
             public GameObject BulletPrefab;
             public int EnemyKillNumberToReachNextLevel;
+            public AudioClip LevelUpClip;
+            public float LevelUpVolume;
+            public AudioClip LoseClip;
+            public float LoseVolume;
         }
     }
 }

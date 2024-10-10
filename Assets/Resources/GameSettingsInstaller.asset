@@ -15,7 +15,11 @@ MonoBehaviour:
   GameInstaller:
     EnemyPrefab: {fileID: 737642905986729916, guid: dbe4dba26c07b2744a364147a54ceca0, type: 3}
     BulletPrefab: {fileID: 4861459498051629172, guid: d4e1df6d3815fbd48b860b354cd1f928, type: 3}
-    EnemyKillNumberToReachNextLevel: 10
+    EnemyKillNumberToReachNextLevel: 5
+    LevelUpClip: {fileID: 8300000, guid: 64795b87003c2324fa0814fbc336066c, type: 3}
+    LevelUpVolume: 1
+    LoseClip: {fileID: 8300000, guid: c8a3fe17a6641ec48b38fb455a40a223, type: 3}
+    LoseVolume: 1
   GameRestartHandler:
     RestartDelay: 3
   Player:
@@ -26,8 +30,8 @@ MonoBehaviour:
       Distance: 9
       OffsetY: 0.5
     PlayerShootHandler:
-      BulletClip: {fileID: 0}
-      LaserVolume: 1
+      BulletClip: {fileID: 8300000, guid: 6f0c572d865b4664db7a460972bc4768, type: 3}
+      BulletVolume: 1
       BulletLifetime: 1
       BulletSpeed: 4
       BulletDamage: 4
@@ -36,7 +40,7 @@ MonoBehaviour:
       Range: 3
     PlayerDamageHandler:
       HealthLoss: 10
-      HitSound: {fileID: 0}
+      HitSound: {fileID: 8300000, guid: 0bddcb411d826e14bb26d40ae45d8e22, type: 3}
       HitSoundVolume: 1
   Enemy:
     DefaultSettings:
@@ -49,8 +53,8 @@ MonoBehaviour:
       StrafeChangeInterval: 0.8
       TeleportNewDistance: 40
     EnemyStateAttack:
-      HitSound: {fileID: 0}
-      AttackRadius: 2
+      HitSound: {fileID: 8300000, guid: 14f24de2a9a70154e96297de25e2184c, type: 3}
+      HitVolume: 1
       HitInterval: 1
   EnemySpawner:
     SpeedMinSlowEnemy: 3
