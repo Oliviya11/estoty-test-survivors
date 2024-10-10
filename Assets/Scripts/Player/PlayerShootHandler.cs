@@ -65,7 +65,7 @@ namespace Player
             else
             {
                 RotatePlayer(_inputState.IsMovingLeft);
-                _player._model.Pistol.transform.eulerAngles = Vector3.zero;
+                _player._model.ChangePistolEuler(Vector3.zero);
             }
         }
 
@@ -73,29 +73,28 @@ namespace Player
         {
             if (target.position.x < _player.Position.x)
             {
-                _player.FlipXPlayer(true);
-                _player.FlipYPistol(true);
+                _player._model.FlipXPlayer(true);
+                _player._model.FlipYPistol(true);
             }
             else
             {
-                _player.FlipXPlayer(false);
-                _player.FlipYPistol(false);
+                _player._model.FlipXPlayer(false);
+                _player._model.FlipYPistol(false);
             }
             
-            _player.FlipXPistol(false);
+            _player._model.FlipXPistol(false);
         }
 
         void RotatePlayer(bool isLeft)
         {
-            _player.FlipXPlayer(isLeft);
-            _player.FlipXPistol(isLeft);
-            _player.FlipYPistol(false);
+            _player._model.FlipXPlayer(isLeft);
+            _player._model.FlipXPistol(isLeft);
+            _player._model.FlipYPistol(false);
         }
 
         void RotatePistolTowardsEnemy(Quaternion quaternion)
         {
-            // Apply the rotation to the object, only changing the Z axis (Euler angle).
-            _player._model.Pistol.transform.rotation = quaternion;
+            _player._model.SetPistolQuaternion(quaternion);
         }
 
         Quaternion GetQuaternionToTarget(Vector3 direction)

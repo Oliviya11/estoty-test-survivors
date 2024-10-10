@@ -26,23 +26,6 @@ namespace Player
             get { return _model.Position; }
         }
 
-        public PingPongColor PingPongColor => _model.PingPongColor;
-
-        public void FlipXPlayer(bool flip)
-        {
-            _model.Self.flipX = flip;
-        }
-
-        public void FlipYPistol(bool flip)
-        {
-            _model.Pistol.flipY = flip;
-        }
-        
-        public void FlipXPistol(bool flip)
-        {
-            _model.Pistol.flipX = flip;
-        }
-
         public void TakeDamage()
         {
             _hitHandler.TakeDamage();

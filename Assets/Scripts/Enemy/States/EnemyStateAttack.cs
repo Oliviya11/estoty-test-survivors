@@ -65,7 +65,6 @@ namespace Enemy.States
 
         void HitPlayer()
         {
-            _player.PingPongColor.Launch();
             _player.TakeDamage();
             _audioPlayer.Play(_settings.HitSound, _settings.HitVolume);
         }

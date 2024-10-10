@@ -33,7 +33,7 @@ namespace Player
         void Die()
         {
             _player.IsDead = true;
-            _player.PlayerAnimator.PlayDeath();
+            _player.PlayDeath();
             _audioPlayer.Play(_settings.LoseClip, _settings.LoseVolume);
             _player.PlayerAnimator.StartCoroutine(FireDie());
         }

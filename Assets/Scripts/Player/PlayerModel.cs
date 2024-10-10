@@ -6,10 +6,10 @@ namespace Player
     public class PlayerModel
     {
         const float Epsilon = 0.01f;
-        public SpriteRenderer Self;
-        public readonly PlayerAnimator PlayerAnimator;
-        public readonly SpriteRenderer Pistol;
-        public readonly PingPongColor PingPongColor;
+        SpriteRenderer _self;
+        readonly PlayerAnimator _playerAnimator;
+        readonly SpriteRenderer _pistol;
+        readonly PingPongColor _pingPongColor;
         readonly Rigidbody _rigidBody;
         float _maxHealth;
         float _currentHealth;
@@ -25,12 +25,14 @@ namespace Player
             _rigidBody = rigidBody;
             _maxHealth = maxHealth;
             _currentHealth = maxHealth;
-            Pistol = pistol;
-            Self = self;
-            PingPongColor = pingPongColor;
-            PlayerAnimator = playerAnimator;
+            _pistol = pistol;
+            _self = self;
+            _pingPongColor = pingPongColor;
+            _playerAnimator = playerAnimator;
         }
-        
+
+        public PlayerAnimator PlayerAnimator => _playerAnimator;
+
         public Vector3 Position
         {
             get { return _rigidBody.position; }
@@ -61,6 +63,47 @@ namespace Player
         public void TakeDamage(float healthLoss)
         {
             _currentHealth = Mathf.Max(0.0f, _currentHealth - healthLoss);
+            _pingPongColor.Launch();
+        }
+
+        public void PlayRun()
+        {
+            _playerAnimator.PlayRun();
+        }
+
+        public void PlayIdle()
+        {
+            _playerAnimator.PlayIdle();
+        }
+
+        public void PlayDeath()
+        {
+            _playerAnimator.PlayDeath();
+        }
+
+        public void ChangePistolEuler(Vector3 angles)
+        {
+            _pistol.transform.eulerAngles = angles;
+        }
+
+        public void SetPistolQuaternion(Quaternion quaternion)
+        {
+            _pistol.transform.rotation = quaternion;
+        }
+        
+        public void FlipXPlayer(bool flip)
+        {
+            _self.flipX = flip;
+        }
+
+        public void FlipYPistol(bool flip)
+        {
+            _pistol.flipY = flip;
+        }
+        
+        public void FlipXPistol(bool flip)
+        {
+            _pistol.flipX = flip;
         }
     }
 }

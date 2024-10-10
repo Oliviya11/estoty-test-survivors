@@ -50,11 +50,11 @@ namespace Player
 
             if (_player.IsRunning())
             {
-                _player.PlayerAnimator.PlayRun();
+                _player.PlayRun();
             }
             else
             {
-                _player.PlayerAnimator.PlayIdle();
+                _player.PlayIdle();
             }
 
             ClampPlayerPosition();
