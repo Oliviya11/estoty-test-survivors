@@ -7,20 +7,21 @@ using Zenject;
 
 namespace UI
 {
-    public class SliderBarHP : MonoBehaviour, IInitializable, IDisposable
+    public class SliderBarHP : IInitializable, IDisposable
     {
-        [SerializeField] Slider slider;
         SignalBus _signalBus;
+        SliderBarHPView _view;
         
         [Inject]
-        public void Construct(SignalBus signalBus)
+        public void Construct(SliderBarHPView view, SignalBus signalBus)
         {
+            _view = view;
             _signalBus = signalBus;
-            slider.value = 1;
         }
 
         public void Initialize()
         {
+            _view.slider.value = 1;
             _signalBus.Subscribe<PlayerGotDamageSignal>(UpdateSlider);
         }
 
@@ -31,7 +32,7 @@ namespace UI
         
         void UpdateSlider(PlayerGotDamageSignal args)
         {
-            slider.value = args.Value;
+            _view.slider.value = args.Value;
         }
     }
 }

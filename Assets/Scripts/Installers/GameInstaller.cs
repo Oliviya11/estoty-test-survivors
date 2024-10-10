@@ -43,8 +43,11 @@ namespace Installers
             
             Container.BindInterfacesTo<GameRestartHandler>().AsSingle();
             
-            Container.BindInterfacesAndSelfTo<SliderBarHP>().FromComponentInHierarchy().AsSingle();
-            Container.BindInterfacesAndSelfTo<SliderExp>().FromComponentInHierarchy().AsSingle();
+            Container.BindInterfacesTo<SliderBarHP>().AsSingle();
+            Container.BindInterfacesAndSelfTo<SliderBarHPView>().FromComponentInHierarchy().AsSingle();
+            
+            Container.BindInterfacesTo<SliderExp>().AsSingle();
+            Container.BindInterfacesAndSelfTo<SliderExpView>().FromComponentInHierarchy().AsSingle();
             
             GameSignalsInstaller.Install(Container);
         }
