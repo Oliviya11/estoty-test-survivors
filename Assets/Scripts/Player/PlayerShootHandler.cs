@@ -7,7 +7,7 @@ using Bullet = Misc.Bullet;
 
 namespace Player
 {
-    public class PlayerShootHandler : ITickable
+    public class PlayerShootHandler : IFixedTickable, IDisposable
     {
         const string HittableLayerName  = "Hittable";
         readonly PlayerFacade _player;
@@ -38,7 +38,7 @@ namespace Player
             _layerMask = 1 << LayerMask.NameToLayer(HittableLayerName);
         }
         
-        public void Tick()
+        public void FixedTick()
         {
             if (_player.IsDead)
             {
@@ -163,6 +163,11 @@ namespace Player
             public float BulletOffsetDistance;
             public float MaxShootInterval;
             public float Range;
+        }
+
+        public void Dispose()
+        {
+            colliders = new Collider[1];
         }
     }
 }
