@@ -10,7 +10,7 @@ namespace UI
     public class SliderExp : IInitializable, IDisposable
     {
         SliderExpView _view;
-        const string Level = "Lv .1";
+        const string Level = "Lv.1";
         const string ZeroEnemies = "0";
         SignalBus _signalBus;
         AudioPlayer _audioPlayer;
@@ -43,8 +43,8 @@ namespace UI
             int modLevel = signal.KilledEnemies % _settings.EnemyKillNumberToReachNextLevel;
             _view.expSlider.value = (modLevel) / (1f * _settings.EnemyKillNumberToReachNextLevel);
             _view.killText.text = $"{signal.KilledEnemies}";
-            int level = signal.KilledEnemies / _settings.EnemyKillNumberToReachNextLevel;
-            _view.levelText.text = $"Lv .{level}";
+            int level = signal.KilledEnemies / _settings.EnemyKillNumberToReachNextLevel + 1;
+            _view.levelText.text = $"Lv.{level}";
 
             if (level > 1 && modLevel == 0)
             {
