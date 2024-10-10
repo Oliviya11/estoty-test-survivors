@@ -72,4 +72,4 @@ MonoBehaviour:
     NumEnemiesIncreaseRate: 2
     NumEnemiesStartAmount: 3
     MinDelayBetweenSpawns: 10
-    EnemiesSlowProbability: 0.5
+    EnemySlowProbability: 0.5
