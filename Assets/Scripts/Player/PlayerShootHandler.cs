@@ -118,7 +118,8 @@ namespace Player
             var bullet = _bulletFactory.Create(
                 _settings.BulletSpeed, _settings.BulletLifetime, _settings.BulletDamage);
 
-            bullet.transform.position = _player.Position + direction * _settings.BulletOffsetDistance;
+            //bullet.transform.position = _player.Position + direction * _settings.BulletOffsetDistance;
+            bullet.transform.position = _playerView.GetBulletPosition().position;
             bullet.transform.rotation = quaternion;
         }
 

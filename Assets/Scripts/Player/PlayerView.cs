@@ -9,6 +9,10 @@ namespace Player
         [SerializeField] PlayerAnimator _playerAnimator;
         [SerializeField] SpriteRenderer _pistol;
         [SerializeField] PingPongColor _pingPongColor;
+        [SerializeField] Transform _bulletPos;
+        [SerializeField] Transform _bulletPosFlippedX;
+        [SerializeField] Transform _bulletPosFlippedY;
+        [SerializeField] Transform _bulletPosFlippedXY;
         
         public PlayerAnimator PlayerAnimator => _playerAnimator;
         
@@ -55,6 +59,26 @@ namespace Player
         public void LaunchPingPongColor()
         {
             _pingPongColor.Launch();
+        }
+
+        public Transform GetBulletPosition()
+        {
+            if (_pistol.flipX && _pistol.flipY)
+            {
+                return _bulletPosFlippedXY;
+            }
+
+            if (_pistol.flipX)
+            {
+                return _bulletPosFlippedX;
+            }
+            
+            if (_pistol.flipY)
+            {
+                return _bulletPosFlippedY;
+            }
+
+            return _bulletPos;
         }
     }
 }
