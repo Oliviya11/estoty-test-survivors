@@ -56,14 +56,41 @@ namespace Player
             {
                 _player.PlayerAnimator.PlayIdle();
             }
-            // Always ensure we are on the main plane
-            //_player.Position = new Vector3(_player.Position.x, _player.Position.y, 0);
+
+            ClampPlayerPosition();
+        }
+
+        void ClampPlayerPosition()
+        {
+            Vector3 playerPosition = _player.Transform.position;
+            if (_player.Transform.position.x < _settings.leftBoundary)
+            {
+                playerPosition.x = _settings.leftBoundary;
+            }
+            else if (_player.Transform.position.x > _settings.rightBoundary)
+            {
+                playerPosition.x = _settings.rightBoundary;
+            }
+            else if (_player.Transform.position.y > _settings.upBoundary)
+            {
+                playerPosition.y = _settings.upBoundary;
+            }
+            else if (_player.Transform.position.y < _settings.downBoundary)
+            {
+                playerPosition.y = _settings.downBoundary;
+            }
+
+            _player.Transform.position = playerPosition;
         }
 
         [Serializable]
         public class Settings
         {
             public float MoveSpeed;
+            public float leftBoundary;
+            public float rightBoundary;
+            public float upBoundary;
+            public float downBoundary;
         }
     }
 }

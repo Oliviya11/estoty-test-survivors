@@ -25,6 +25,10 @@ MonoBehaviour:
   Player:
     PlayerMoveHandler:
       MoveSpeed: 50
+      leftBoundary: -157
+      rightBoundary: 157
+      upBoundary: 100
+      downBoundary: -100
     CameraFollow:
       RotationAngleX: 0
       Distance: 9
