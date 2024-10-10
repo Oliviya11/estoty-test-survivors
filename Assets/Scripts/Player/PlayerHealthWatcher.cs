@@ -9,22 +9,24 @@ namespace Player
     public class PlayerHealthWatcher : ITickable
     {
         readonly SignalBus _signalBus;
-        readonly PlayerModel _player;
+        readonly PlayerModel _playerModel;
+        readonly PlayerView _playerView;
         readonly AudioPlayer _audioPlayer;
         readonly GameInstaller.Settings _settings;
 
-        public PlayerHealthWatcher(PlayerModel player, SignalBus signalBus, 
+        public PlayerHealthWatcher(PlayerModel playerModel, PlayerView playerView, SignalBus signalBus, 
             AudioPlayer audioPlayer, GameInstaller.Settings settings)
         {
             _signalBus = signalBus;
-            _player = player;
+            _playerModel = playerModel;
+            _playerView = playerView;
             _audioPlayer = audioPlayer;
             _settings = settings;
         }
 
         public void Tick()
         {
-            if (_player.CurrentHealth <= 0 && !_player.IsDead)
+            if (_playerModel.CurrentHealth <= 0 && !_playerModel.IsDead)
             {
                Die();
             }
@@ -32,10 +34,10 @@ namespace Player
 
         void Die()
         {
-            _player.IsDead = true;
-            _player.PlayDeath();
+            _playerModel.IsDead = true;
+            _playerView.PlayDeath();
             _audioPlayer.Play(_settings.LoseClip, _settings.LoseVolume);
-            _player.PlayerAnimator.StartCoroutine(FireDie());
+            _playerView.PlayerAnimator.StartCoroutine(FireDie());
         }
 
         IEnumerator FireDie()

@@ -7,54 +7,57 @@ namespace Player
     public class PlayerMoveHandler : IFixedTickable
     {
         readonly Settings _settings;
-        readonly PlayerModel _player;
+        readonly PlayerModel _playerModel;
+        readonly PlayerView _playerView;
         readonly PlayerInputState _inputState;
 
         public PlayerMoveHandler(
             PlayerInputState inputState,
-            PlayerModel player,
+            PlayerModel playerModel,
+            PlayerView playerView,
             Settings settings)
         {
             _settings = settings;
-            _player = player;
+            _playerModel = playerModel;
+            _playerView = playerView;
             _inputState = inputState;
         }
 
         public void FixedTick()
         {
-            if (_player.IsDead) return;
+            if (_playerModel.IsDead) return;
             
             if (_inputState.IsMovingLeft)
             {
-                _player.AddForce(
+                _playerModel.AddForce(
                     Vector3.left * _settings.MoveSpeed);
             }
 
             if (_inputState.IsMovingRight)
             {
-                _player.AddForce(
+                _playerModel.AddForce(
                     Vector3.right * _settings.MoveSpeed);
             }
 
             if (_inputState.IsMovingUp)
             {
-                _player.AddForce(
+                _playerModel.AddForce(
                     Vector3.up * _settings.MoveSpeed);
             }
 
             if (_inputState.IsMovingDown)
             {
-                _player.AddForce(
+                _playerModel.AddForce(
                     Vector3.down * _settings.MoveSpeed);
             }
 
-            if (_player.IsRunning())
+            if (_playerModel.IsRunning())
             {
-                _player.PlayRun();
+                _playerView.PlayRun();
             }
             else
             {
-                _player.PlayIdle();
+                _playerView.PlayIdle();
             }
 
             ClampPlayerPosition();
@@ -62,25 +65,25 @@ namespace Player
 
         void ClampPlayerPosition()
         {
-            Vector3 playerPosition = _player.Transform.position;
-            if (_player.Transform.position.x < _settings.leftBoundary)
+            Vector3 playerPosition = _playerModel.Transform.position;
+            if (_playerModel.Transform.position.x < _settings.leftBoundary)
             {
                 playerPosition.x = _settings.leftBoundary;
             }
-            else if (_player.Transform.position.x > _settings.rightBoundary)
+            else if (_playerModel.Transform.position.x > _settings.rightBoundary)
             {
                 playerPosition.x = _settings.rightBoundary;
             }
-            else if (_player.Transform.position.y > _settings.upBoundary)
+            else if (_playerModel.Transform.position.y > _settings.upBoundary)
             {
                 playerPosition.y = _settings.upBoundary;
             }
-            else if (_player.Transform.position.y < _settings.downBoundary)
+            else if (_playerModel.Transform.position.y < _settings.downBoundary)
             {
                 playerPosition.y = _settings.downBoundary;
             }
 
-            _player.Transform.position = playerPosition;
+            _playerModel.Transform.position = playerPosition;
         }
 
         [Serializable]

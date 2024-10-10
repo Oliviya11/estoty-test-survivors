@@ -16,15 +16,9 @@ namespace Player
             _hitHandler = hitHandler;
         }
 
-        public bool IsDead
-        {
-            get { return _model.IsDead; }
-        }
+        public bool IsDead => _model.IsDead;
 
-        public Vector3 Position
-        {
-            get { return _model.Position; }
-        }
+        public Vector3 Position => _model.Position;
 
         public void TakeDamage()
         {

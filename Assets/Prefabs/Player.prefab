@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 5359434834993934794}
   - component: {fileID: 1102617781871242878}
   - component: {fileID: 3233733712068225143}
+  - component: {fileID: 5361389751957733048}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -159,6 +160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _components:
   - {fileID: 2548688727688414756}
+  - {fileID: 5361389751957733048}
   _identifier: 
   _useSceneContext: 0
   _context: {fileID: 0}
@@ -258,6 +260,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 5680689462691970148}
   underSpriteRenderer: {fileID: 2137275305157410892}
+--- !u!114 &5361389751957733048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728152719562234571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18ec66e31fc047e0beb3e57dde359750, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _self: {fileID: 5680689462691970148}
+  _playerAnimator: {fileID: 1102617781871242878}
+  _pistol: {fileID: 375922484433242945}
+  _pingPongColor: {fileID: 7102894931361760867}
 --- !u!1 &1679557700323483821
 GameObject:
   m_ObjectHideFlags: 0

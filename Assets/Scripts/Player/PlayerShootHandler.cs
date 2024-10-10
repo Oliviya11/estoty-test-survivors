@@ -11,6 +11,7 @@ namespace Player
     {
         const string HittableLayerName  = "Hittable";
         readonly PlayerFacade _player;
+        readonly PlayerView _playerView;
         readonly Settings _settings;
         readonly Bullet.Factory _bulletFactory;
         readonly AudioPlayer _audioPlayer;
@@ -24,10 +25,12 @@ namespace Player
             Bullet.Factory bulletFactory,
             Settings settings,
             PlayerFacade player,
+            PlayerView playerView,
             AudioPlayer audioPlayer,
             PlayerInputState inputState)
         {
             _player = player;
+            _playerView = playerView;
             _settings = settings;
             _bulletFactory = bulletFactory;
             _audioPlayer = audioPlayer;
@@ -65,7 +68,7 @@ namespace Player
             else
             {
                 RotatePlayer(_inputState.IsMovingLeft);
-                _player._model.ChangePistolEuler(Vector3.zero);
+                _playerView.ChangePistolEuler(Vector3.zero);
             }
         }
 
@@ -73,28 +76,28 @@ namespace Player
         {
             if (target.position.x < _player.Position.x)
             {
-                _player._model.FlipXPlayer(true);
-                _player._model.FlipYPistol(true);
+                _playerView.FlipXPlayer(true);
+                _playerView.FlipYPistol(true);
             }
             else
             {
-                _player._model.FlipXPlayer(false);
-                _player._model.FlipYPistol(false);
+                _playerView.FlipXPlayer(false);
+                _playerView.FlipYPistol(false);
             }
             
-            _player._model.FlipXPistol(false);
+            _playerView.FlipXPistol(false);
         }
 
         void RotatePlayer(bool isLeft)
         {
-            _player._model.FlipXPlayer(isLeft);
-            _player._model.FlipXPistol(isLeft);
-            _player._model.FlipYPistol(false);
+            _playerView.FlipXPlayer(isLeft);
+            _playerView.FlipXPistol(isLeft);
+            _playerView.FlipYPistol(false);
         }
 
         void RotatePistolTowardsEnemy(Quaternion quaternion)
         {
-            _player._model.SetPistolQuaternion(quaternion);
+            _playerView.SetPistolQuaternion(quaternion);
         }
 
         Quaternion GetQuaternionToTarget(Vector3 direction)

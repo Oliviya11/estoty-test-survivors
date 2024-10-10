@@ -13,9 +13,9 @@ namespace Installers
         
         public override void InstallBindings()
         {
+            //Container.BindInterfacesAndSelfTo<PlayerView>().FromComponentInHierarchy().AsSingle();
             Container.Bind<PlayerModel>().AsSingle()
-                .WithArguments(_settings.Rigidbody, _settings.MaxHealth, _settings.Pistol, _settings.Self,
-                    _settings.PingPongColor, _settings.PlayerAnimator);
+                .WithArguments(_settings.Rigidbody, _settings.MaxHealth);
             
             Container.BindInterfacesTo<PlayerInputHandler>().AsSingle();
             Container.BindInterfacesTo<PlayerMoveHandler>().AsSingle();
