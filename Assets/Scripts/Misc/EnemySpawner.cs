@@ -12,6 +12,7 @@ namespace Misc
 {
     public class EnemySpawner : ITickable, IInitializable
     {
+        const float SlightlyOutside = 5f;
         readonly EnemyFacade.Factory _enemyFactory;
         readonly Settings _settings;
         readonly GameInstaller.Settings _gameSettings;
@@ -99,20 +100,20 @@ namespace Misc
             switch (side)
             {
                 case 0: // Left
-                    xPosition = bottomLeft.x - 1f; // Slightly outside the left edge
+                    xPosition = bottomLeft.x - SlightlyOutside; // Slightly outside the left edge
                     yPosition = Random.Range(bottomLeft.y, topRight.y);
                     break;
                 case 1: // Right
-                    xPosition = topRight.x + 1f; // Slightly outside the right edge
+                    xPosition = topRight.x + SlightlyOutside; // Slightly outside the right edge
                     yPosition = Random.Range(bottomLeft.y, topRight.y);
                     break;
                 case 2: // Top
                     xPosition = Random.Range(bottomLeft.x, topRight.x);
-                    yPosition = topRight.y + 1f; // Slightly outside the top edge
+                    yPosition = topRight.y + SlightlyOutside; // Slightly outside the top edge
                     break;
                 case 3: // Bottom
                     xPosition = Random.Range(bottomLeft.x, topRight.x);
-                    yPosition = bottomLeft.y - 1f; // Slightly outside the bottom edge
+                    yPosition = bottomLeft.y - SlightlyOutside; // Slightly outside the bottom edge
                     break;
             }
 
