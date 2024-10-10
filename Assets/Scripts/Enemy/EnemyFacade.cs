@@ -6,7 +6,7 @@ using Zenject;
 
 namespace Enemy
 {
-    public class EnemyFacade : MonoBehaviour, IPoolable<float, float, GameObject, IMemoryPool>, IDisposable
+    public class EnemyFacade : MonoBehaviour, IPoolable<float, float, IMemoryPool>, IDisposable
     {
         EnemyView _view;
         EnemyTunables _tunables;
@@ -61,11 +61,9 @@ namespace Enemy
             _pool = null;
         }
 
-        public void OnSpawned(float maxHp, float speed, GameObject enemyPrefab, IMemoryPool pool)
+        public void OnSpawned(float maxHp, float speed, IMemoryPool pool)
         {
             _pool = pool;
-            GameObject go = Instantiate(enemyPrefab, transform);
-            Init(go.GetComponent<EnemyChildView>());
             _tunables.MaxHP = maxHp;
             _tunables.Speed = speed;
             Health = maxHp;
@@ -111,15 +109,7 @@ namespace Enemy
             _view.SpriteRenderer.flipX = value;
         }
 
-        public void Init(EnemyChildView enemyChildView)
-        {
-            _view._rigidBody = enemyChildView._rigidBody;
-            _view._enemyAnimator = enemyChildView._enemyAnimator;
-            _view._hpBar = enemyChildView._hpBar;
-            _view._spriteRenderer = enemyChildView._spriteRenderer;
-        }
-        
-        public class Factory : PlaceholderFactory<float, float, GameObject, EnemyFacade>
+        public class Factory : PlaceholderFactory<float, float, EnemyFacade>
         {
         }
     }

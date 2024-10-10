@@ -17,10 +17,10 @@ namespace Installers
             Container.Bind<Progress>().AsSingle();
             Container.Bind<Camera>().FromComponentInHierarchy().AsSingle();
             Container.BindInterfacesAndSelfTo<EnemySpawner>().AsSingle();
-            Container.BindFactory<float, float, GameObject, EnemyFacade, EnemyFacade.Factory>()
+            Container.BindFactory<float, float, EnemyFacade, EnemyFacade.Factory>()
                 // We could just use FromMonoPoolableMemoryPool here instead, but
                 // for IL2CPP to work we need our pool class to be used explicitly here
-                .FromPoolableMemoryPool<float, float, GameObject, EnemyFacade, EnemyFacadePool>(poolBinder => poolBinder
+                .FromPoolableMemoryPool<float, float, EnemyFacade, EnemyFacadePool>(poolBinder => poolBinder
                     // Spawn 5 enemies right off the bat so that we don't incur spikes at runtime
                     .WithInitialSize(5)
                     .FromSubContainerResolve()
@@ -49,7 +49,7 @@ namespace Installers
             GameSignalsInstaller.Install(Container);
         }
         
-        class EnemyFacadePool : MonoPoolableMemoryPool<float, float, GameObject, IMemoryPool, EnemyFacade>
+        class EnemyFacadePool : MonoPoolableMemoryPool<float, float, IMemoryPool, EnemyFacade>
         {
         }
         

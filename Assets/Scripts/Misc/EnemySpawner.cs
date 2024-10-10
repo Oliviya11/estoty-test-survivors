@@ -81,7 +81,7 @@ namespace Misc
             }
 
             Vector3 position = ChooseRandomStartPosition();
-            EnemyFacade enemyFacade = _enemyFactory.Create(hp, speed, gameObject);
+            EnemyFacade enemyFacade = _enemyFactory.Create(hp, speed);
             enemyFacade.Position = position;
 
             _lastSpawnTime = Time.realtimeSinceStartup;
