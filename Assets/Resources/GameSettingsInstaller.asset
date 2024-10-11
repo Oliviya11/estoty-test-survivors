@@ -21,7 +21,7 @@ MonoBehaviour:
     LoseClip: {fileID: 8300000, guid: c8a3fe17a6641ec48b38fb455a40a223, type: 3}
     LoseVolume: 3
   GameRestartHandler:
-    RestartDelay: 3
+    RestartDelay: 1.5
   Player:
     PlayerMoveHandler:
       MoveSpeed: 50
@@ -62,7 +62,7 @@ MonoBehaviour:
       HitInterval: 1
   EnemySpawner:
     SpeedMinSlowEnemy: 3
-    SpeedMaxSlowEnemy: 5
+    SpeedMaxSlowEnemy: 6
     HPSMinSlowEnemy: 50
     HPMaxSlowEnemy: 70
     SpeedMinFastEnemy: 7
@@ -71,5 +71,5 @@ MonoBehaviour:
     HPMaxFastEnemy: 40
     NumEnemiesIncreaseRate: 2
     NumEnemiesStartAmount: 3
-    MinDelayBetweenSpawns: 10
+    MinDelayBetweenSpawns: 3
     EnemySlowProbability: 0.5

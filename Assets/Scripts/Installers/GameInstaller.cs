@@ -73,6 +73,7 @@ namespace Installers
             public float LevelUpVolume;
             public AudioClip LoseClip;
             public float LoseVolume;
+            public float DelayBeforeBoot = 2f;
         }
     }
 }

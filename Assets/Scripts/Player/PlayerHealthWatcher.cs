@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Installers;
 using Misc;
 using UnityEngine;
@@ -42,7 +43,7 @@ namespace Player
 
         IEnumerator FireDie()
         {
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(_settings.DelayBeforeBoot);
             _signalBus.Fire<PlayerDiedSignal>();
         }
     }
