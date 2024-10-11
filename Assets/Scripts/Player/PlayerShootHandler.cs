@@ -141,7 +141,7 @@ namespace Player
                 Vector3 diff = collider.transform.position - _player.Position;
                 float distance = diff.sqrMagnitude;
 
-                if (distance < closestDistance)
+                if (distance < closestDistance && distance < _settings.Range * _settings.Range)
                 {
                     closestDistance = distance;
                     closestCollider = collider;
