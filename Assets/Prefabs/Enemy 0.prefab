@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 418403744209364939}
   - component: {fileID: 8502713721854741409}
   - component: {fileID: 8657209133812011971}
-  - component: {fileID: 8987735920063131685}
   m_Layer: 6
   m_Name: Enemy 0
   m_TagString: Untagged
@@ -123,20 +122,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpriteRenderer: {fileID: 418403744209364939}
   Animator: {fileID: 8502713721854741409}
---- !u!114 &8987735920063131685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6723594372531577740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5aa831eed9224925befc38b4d74dc995, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 418403744209364939}
-  underSpriteRenderer: {fileID: 6557372574149246162}
 --- !u!1 &6915894039267762295
 GameObject:
   m_ObjectHideFlags: 0
