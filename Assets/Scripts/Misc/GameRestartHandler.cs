@@ -36,6 +36,7 @@ namespace Misc
                 if (Time.realtimeSinceStartup - _delayStartTime > _settings.RestartDelay)
                 {
                     SceneManager.UnloadSceneAsync(BootScene);
+                    Resources.UnloadUnusedAssets();
                     SceneManager.LoadScene(GameplayScene);
                 }
             }
