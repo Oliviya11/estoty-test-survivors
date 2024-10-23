@@ -29,7 +29,7 @@ namespace Installers
         [Serializable]
         public class Settings
         {
-            public Rigidbody Rigidbody;
+            public Rigidbody2D Rigidbody;
             public float MaxHealth;
             public SpriteRenderer Pistol;
             public SpriteRenderer Self;

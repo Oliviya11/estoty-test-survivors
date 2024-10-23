@@ -18,7 +18,6 @@ namespace Enemy
         //readonly AudioPlayer _audioPlayer;
         readonly EnemyView _view;
         readonly Progress _progress;
-        int _killedEnemies = 0;
 
         public EnemyHitDeathHandler(
             EnemyView view,

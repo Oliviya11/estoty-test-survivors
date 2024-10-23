@@ -1,5 +1,6 @@
 ﻿using Enemy;
 using Player;
+using System.Collections;
 using UnityEngine;
 using Zenject;
 
@@ -12,7 +13,9 @@ namespace Misc
         float _lifeTime;
         float _startTime;
         float _damage;
-        
+        Coroutine despawnCoroutine;
+
+
         public void Update()
         {
             transform.position += transform.right * _speed * Time.deltaTime;
@@ -23,15 +26,23 @@ namespace Misc
             }
         }
         
-        public void OnTriggerEnter(Collider other)
+        public void OnTriggerEnter2D(Collider2D other)
         {
             var enemyView = other.transform.GetComponent<EnemyView>();
             
             if (enemyView != null)
             {
                 enemyView.Facade.Hit(_damage);
-                _pool.Despawn(this);
+                if (despawnCoroutine == null)
+                    despawnCoroutine = StartCoroutine(DespawnAfterFrame());
             }
+        }
+
+        IEnumerator DespawnAfterFrame()
+        {
+            yield return new WaitForEndOfFrame(); // Wait until the end of the current frame
+            _pool.Despawn(this); // Now despawn it
+            despawnCoroutine = null;
         }
 
         public void OnDespawned()

@@ -8,7 +8,7 @@ namespace Enemy
 {
     public class EnemyView : MonoBehaviour
     {
-        [SerializeField] Rigidbody _rigidBody;
+        [SerializeField] Rigidbody2D _rigidBody;
         [SerializeField] EnemyAnimator _enemyAnimator;
         [SerializeField] HPBar _hpBar;
         [SerializeField] SpriteRenderer _spriteRenderer;
@@ -27,7 +27,7 @@ namespace Enemy
             set { _rigidBody.transform.position = value; }
         }
         
-        public Rigidbody Rigidbody => _rigidBody;
+        public Rigidbody2D Rigidbody => _rigidBody;
         public EnemyAnimator EnemyAnimator => _enemyAnimator;
         public HPBar HpBar => _hpBar;
         public SpriteRenderer SpriteRenderer => _spriteRenderer;

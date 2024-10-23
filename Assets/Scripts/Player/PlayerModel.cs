@@ -6,12 +6,12 @@ namespace Player
     public class PlayerModel
     {
         const float Epsilon = 0.01f;
-        readonly Rigidbody _rigidBody;
+        readonly Rigidbody2D _rigidBody;
         float _maxHealth;
         float _currentHealth;
 
         public PlayerModel(
-            Rigidbody rigidBody,
+            Rigidbody2D rigidBody,
             float maxHealth)
         {
             _rigidBody = rigidBody;

@@ -18,7 +18,7 @@ namespace Player
         readonly PlayerInputState _inputState;
         float _lastFireTime;
         private LayerMask layerMask;
-        private Collider[] colliders = new Collider[1];
+        private Collider2D[] colliders = new Collider2D[1];
         int _layerMask;
 
         public PlayerShootHandler(
@@ -54,7 +54,7 @@ namespace Player
 
         void Fire()
         {
-            Collider collider = GetClosestEnemy();
+            Collider2D collider = GetClosestEnemy();
             if (collider != null)
             {
                 // Get direction to the target, considering X and Y positions.
@@ -123,17 +123,17 @@ namespace Player
             bullet.transform.rotation = quaternion;
         }
 
-        Collider GetClosestEnemy()
+        Collider2D GetClosestEnemy()
         {
             // Get all colliders within the defined radius
-            var size = Physics.OverlapSphereNonAlloc(_player.Position, _settings.Range, colliders, _layerMask);
+            var size = Physics2D.OverlapCircleNonAlloc(_player.Position, _settings.Range, colliders, _layerMask);
             if (size == 0) return null;
             
-            Collider closestCollider = null;
+            Collider2D closestCollider = null;
             float closestDistance = Mathf.Infinity;
 
             // Loop through each collider and find the closest one
-            foreach (Collider collider in colliders)
+            foreach (Collider2D collider in colliders)
             {
                 EnemyFacade enemyFacade = collider.GetComponent<EnemyFacade>();
                 if (enemyFacade != null && enemyFacade.IsDead) continue;
@@ -168,7 +168,7 @@ namespace Player
 
         public void Dispose()
         {
-            colliders = new Collider[1];
+            colliders = new Collider2D[1];
         }
     }
 }
