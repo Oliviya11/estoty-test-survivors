@@ -13,26 +13,17 @@ namespace Enemy
         const float WaitBeforeDispose = 1f;
         readonly EnemyFacade _facade;
         readonly SignalBus _signalBus;
-        //readonly Settings _settings;
-        //readonly Explosion.Factory _explosionFactory;
-        //readonly AudioPlayer _audioPlayer;
         readonly EnemyView _view;
         readonly Progress _progress;
 
         public EnemyHitDeathHandler(
             EnemyView view,
-            //AudioPlayer audioPlayer,
-            //Explosion.Factory explosionFactory,
-            //Settings settings,
             SignalBus signalBus,
             EnemyFacade facade,
             Progress progress)
         {
             _facade = facade;
             _signalBus = signalBus;
-            //_settings = settings;
-            //_explosionFactory = explosionFactory;
-            //_audioPlayer = audioPlayer;
             _view = view;
             _progress = progress;
         }
